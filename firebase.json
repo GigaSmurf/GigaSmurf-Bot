@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "GigaSmurf-Bot",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
