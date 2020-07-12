@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
+const token = 'NzI5Nzg2OTE0MzY1NzY3ODEz.XwR2wQ.oFVa5VJuB3rvL8kD95OwxDwD3B4'
 
 const PREFIX = "-"
 
@@ -219,4 +220,4 @@ function shuffle(message){
   
 }
 
-bot.login(process.env.token);
+bot.login(token);
