@@ -4,58 +4,65 @@ module.exports = {
     name: 'poll',
     description: 'This command creates a yes or no poll to help make a decision',
     async execute(message, args){
-        let timelim = args[1] * 60000;
-        let msgArgs = args.slice(2).join(" ");
-
-        let pollEmbed = new Discord.MessageEmbed()
-        .setColor("#E73D07")
-        .setTitle("Poll")
-        .setFooter(message.author.username)
-        .setImage(message.author.avatarURL)
-        .setTimestamp()
-        .setDescription(msgArgs);
-        
-        let yes = 0;
-        let no = 0;
-        let pollMessage = await message.channel.send(pollEmbed).then(async embedmessage =>{
-           await embedmessage.react(emojis.yes);
-           await embedmessage.react(emojis.no);
-
-           
-           const filter = (reaction, user) => { return (reaction.emoji.name == emojis.yes || reaction.emoji.name == emojis.no) && user.id == message.author.id; };
-        const results = await embedmessage.awaitReactions(filter,{time:timelim})
-        .then(collected =>{
-            const reaction = collected.first();
-            if(reaction.emoji.name === emojis.yes){
-                yes+=1;
+        let time = args[1];
+        let question = args.slice(2).join(" ");
+        let regex = new RegExp(/^([0-9]{2}|[0-9]{1})[sSmM]$/);
+        if(regex.test(time)) {
+            if(time.toLowerCase().endsWith('s')) {
+                time = parseInt(time.substring(0, time.indexOf('s')));
+                time *= 1000;
+            } 
+            else if(time.toLowerCase().endsWith('m')) {
+                time = parseInt(time.substring(0, time.indexOf('m')));
+                time *= 60 * 1000;
             }
-            else if (reaction.emoji.name === emojis.no){
-                no+=1;
-            }
-            else{
-                console.log("no votes");
-            }
-        }).catch(() =>{
-            console.log('no reactions recorded');
-        });
+            const embed = new Discord.MessageEmbed()
+                .setColor("#E73D07")
+                .setTitle(question)
+                .setDescription('React with 👍 or 👎')
+                .setTimestamp();
+            try {
+                const polls = new Map();
+                const userVotes = new Map();
+                let filter = (reaction, user) => {
+                    if(user.bot) return false;
+                    if(['👍', '👎'].includes(reaction.emoji.name)) {
+                        if(polls.get(reaction.message.id).get(user.id))
+                            return false;
+                        else {
+                            userVotes.set(user.id, reaction.emoji.name);
+                            return true;
+                        }
+                    }
+                }
+                let msg = await message.channel.send(embed);
+                await msg.react('👍');
+                await msg.react('👎');
+                polls.set(msg.id, userVotes);
+                let reactions = await msg.awaitReactions(filter, { time: time });
+                let thumbsUp = reactions.get('👍');
+                let thumbsDown = reactions.get('👎');
+                let thumbsUpResults = 0, thumbsDownResults = 0;
+                if(thumbsUp)
+                    thumbsUpResults = thumbsUp.users.cache.filter(u => !u.bot).size;
+                if(thumbsDown)
+                    thumbsDownResults = thumbsDown.users.cache.filter(u => !u.bot).size;
+                const resultsEmbed = new Discord.MessageEmbed()
+                    .setColor("#28EB28")
+                    .setTitle('Results')
+                    .setFooter(message.author.username)
+                    //.setDescription(`👍 - ${thumbsUpResults} votes\n\n👎 - ${thumbsDownResults} votes\n`);
+                    .setDescription(`for the poll "${question}"`)
+                    .setTimestamp()
+                    .addField('👍',`${thumbsUpResults} Votes`,false)
+                    .addField('👎',`${thumbsDownResults} Votes`,false);
 
-        
-        //pollEmbed.delete(0);
-        
-        }).catch(()=>{
-            console.log('operation failed, mission abort');
-        });    
-        let resultsEmbed = new Discord.MessageEmbed()
-        .setTitle("Poll Results")
-        .setColor("#28EB28")
-        .setDescription(`Results for the poll "${msgArgs}"`)
-        .addField("👍:", `${yes} Votes`)
-        .addField("👎:", `${no} Votes`)
-        .setTimestamp()
-        .setFooter(message.author.username);
-
-        message.channel.send(resultsEmbed);
-        
+                await message.channel.send(resultsEmbed);
+            }
+            catch(err) {
+                console.log(err);
+            }
+        }
 
         
     }

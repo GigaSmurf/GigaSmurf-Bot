@@ -160,6 +160,15 @@ bot.on('message', message => {
     case 'link':
       bot.commands.get('link').execute(message,args);
       break;
+    case 'weather':
+      bot.commands.get('weather').execute(message,args);
+      break;
+    case 'openinglist':
+      bot.commands.get('openinglist').execute(message,args);
+      break;
+    case 'opening':
+      bot.commands.get('opening').execute(message,args);
+      break;
     default:
       message.channel.send("...-help for the list of commands my fellow smurf.");
     break;
