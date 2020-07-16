@@ -17,6 +17,6 @@ module.exports ={
         )
         .setFooter("Version: Alpha 2.0");
 
-        message.author.send(Embed);
+        message.channel.send(Embed);
     }
 }
