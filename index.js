@@ -53,7 +53,7 @@ bot.on('guildMemberAdd', member => {
   let club = 0;
   //chess club feature
   bot.guilds.cache.forEach((guild) => {
-    if(guild.name === "CRHS CHESS CLUB"){
+    if(guild.name === "CRHS CHESS CLUB" && guild.id === 731258551703699517){
       let role = guild.roles.cache.find(role => role.name === "Knight");
       member.roles.add(role);
       club = 1;
