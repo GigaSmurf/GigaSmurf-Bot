@@ -50,23 +50,16 @@ bot.on('guildMemberAdd', member => {
   if(!channel) {channel = member.guild.channels.cache.find(channel =>  channel.name === "general");}
   if(!channel) return;
 
-  let club = 0;
   //chess club feature
-  bot.guilds.cache.forEach((guild) => {
-    if(guild.name === "CRHS CHESS CLUB" && guild.id === '731258551703699517'){
-      let role = guild.roles.cache.find(role => role.name === "Knight");
-      member.roles.add(role);
-      club = 1;
-    }
-  })
-
-  if(club === 1){
+  if(bot.guilds.cache.get("731258551703699517")){
     channel.send(`Welcome to CRHS Chess Club, ${member}! Please read ♘#rules♘ for info.`);
-    club = 0;
+    let role = guild.roles.cache.find(role => role.name === "Knight");
+    member.roles.add(role);
   }
   else{
     channel.send(`Welcome to our server, ${member}`);
   }
+  
 });
 
 //someone leaves server 
