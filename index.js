@@ -62,6 +62,7 @@ bot.on('guildMemberAdd', member => {
 
   if(club === 1){
     channel.send(`Welcome to CRHS Chess Club, ${member}! Please read ♘#rules♘ for info.`);
+    club = 0;
   }
   else{
     channel.send(`Welcome to our server, ${member}`);
