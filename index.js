@@ -51,7 +51,7 @@ bot.on('guildMemberAdd', member => {
   if(!channel) return;
 
   //chess club feature
-  if(bot.guilds.cache.get("731258551703699517")){
+  if(bot.guilds.cache.get("731258551703699517").id==="731258551703699517"){
     channel.send(`Welcome to CRHS Chess Club, ${member}! Please read ♘#rules♘ for info.`);
     bot.guilds.cache.forEach((guild) => {
     let role = guild.roles.cache.find(role => role.name === "Knight");
