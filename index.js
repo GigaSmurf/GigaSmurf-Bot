@@ -7,7 +7,7 @@ const PREFIX = "-"
 
 var version = 'beta';
 //run server forever
-/*var http = require('http');
+var http = require('http');
 
 var server = http.createServer(function (request, response) {
   if (request.url === '/') {
@@ -19,7 +19,7 @@ var server = http.createServer(function (request, response) {
 
 server.listen(8080, function () {
   console.log('Im listening on port 8080');
-});*/
+});
 
 const fs = require('fs');
 bot.commands = new Discord.Collection();
