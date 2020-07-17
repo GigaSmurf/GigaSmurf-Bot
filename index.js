@@ -55,7 +55,7 @@ bot.on('guildMemberAdd', member => {
     channel.send(`Welcome to CRHS Chess Club, ${member}! Please read ♘#rules♘ for info.`);
     bot.guilds.cache.forEach((guild) => {
     let role = guild.roles.cache.find(role => role.name === "Knight");
-    member.roles.add(role);
+    member.roles.add(role).catch(err => console.log(err));
   });
   }
   else{
