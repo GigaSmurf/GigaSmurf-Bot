@@ -46,10 +46,26 @@ bot.on('ready', () => {
 
 //someone joins server
 bot.on('guildMemberAdd', member => {
-  const channel = member.guild.channels.cache.find(channel => channel.name === "general");
+  let channel = member.guild.channels.cache.find(channel => channel.name === "welcome");
+  if(!channel) {channel = member.guild.channels.cache.find(channel =>  channel.name === "general");}
   if(!channel) return;
 
-  channel.send(`Welcome to our server, ${member}`)
+  let club = 0;
+  //chess club feature
+  bot.guilds.cache.forEach((guild) => {
+    if(guild.name === "CRHS CHESS CLUB"){
+      let role = guild.roles.cache.find(role => role.name === "Knight");
+      member.roles.add(role);
+      club = 1;
+    }
+  })
+
+  if(club === 1){
+    channel.send(`Welcome to CRHS Chess Club, ${member}! Please read ♘#rules♘ for info.`);
+  }
+  else{
+    channel.send(`Welcome to our server, ${member}`);
+  }
 });
 
 //someone leaves server 
