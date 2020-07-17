@@ -7,6 +7,7 @@ module.exports = {
     description: 'This bot times people out for a certain amount of time',
     execute(message,args){
              let cachedRoles = {};
+             if(message.channel.type =="dm") return message.channel.send("Hey watchu trying...the boss said you don't have permission");
             if(!message.member.hasPermission('MANAGE_MESSAGES')) return  message.channel.send("Hey watchu trying...the boss said you don't have permission");
 
             var person = message.guild.member(message.mentions.users.first() || message.guild.member.get(args[1]));
