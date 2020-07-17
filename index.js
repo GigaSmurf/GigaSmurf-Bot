@@ -53,13 +53,15 @@ bot.on('guildMemberAdd', member => {
   //chess club feature
   if(bot.guilds.cache.get("731258551703699517")){
     channel.send(`Welcome to CRHS Chess Club, ${member}! Please read ♘#rules♘ for info.`);
+    bot.guilds.cache.forEach((guild) => {
     let role = guild.roles.cache.find(role => role.name === "Knight");
     member.roles.add(role);
+  });
   }
   else{
     channel.send(`Welcome to our server, ${member}`);
   }
-  
+
 });
 
 //someone leaves server 
