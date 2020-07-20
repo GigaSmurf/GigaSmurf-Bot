@@ -1,6 +1,17 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+//initialize firebase firestore
+var admin = require("firebase-admin");
 
+var serviceAccount = require("./serviceAccountKey.json");
+const { FieldValue } = require('@google-cloud/firestore');
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://gigasmurf-bot.firebaseio.com"
+});
+
+const db = admin.firestore();
 
 
 const PREFIX = "-"
@@ -74,6 +85,9 @@ bot.on('guildMemberRemove', member => {
 let status = 0;
 let players = [];
 let gametype = "";
+
+
+
 bot.on('message', message => {
   //this ignores a message that is not a calling the bot and messages from other bots
   if(!message.content.startsWith(PREFIX) || message.author.bot) return;
@@ -85,6 +99,27 @@ bot.on('message', message => {
 
     case "help":
       bot.commands.get('help').execute(message,args);
+      break;
+    case 'add':
+      bot.commands.get('add').execute(message,args);
+      break;
+    case 'delete':
+      bot.commands.get('delete').execute(message,args);
+      break;
+    case 'unviewed':
+      bot.commands.get('unviewed').execute(message,args);
+      break;
+    case 'viewed':
+      bot.commands.get('viewed').execute(message,args);
+      break;
+    case 'watch':
+      bot.commands.get('watch').execute(message,args);
+      break;
+    case 'viewdelete':
+      bot.commands.get('viewdelete').execute(message,args);
+      break;
+    case 'moviepoll':
+      bot.commands.get('moviepoll').execute(message,args);
       break;
     case "helphere":
       bot.commands.get('helphere').execute(message,args);
