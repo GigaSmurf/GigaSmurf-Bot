@@ -1,7 +1,7 @@
 var admin = require("firebase-admin");
 const db = admin.firestore();
 const { FieldValue } = require('@google-cloud/firestore');
-
+const Discord = require('discord.js');
 module.exports ={
     name: "viewed",
     description: "Displays the viewed list",
