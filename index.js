@@ -88,7 +88,7 @@ let gametype = "";
 
 
 
-bot.on('message', message => {
+bot.on('message',async message => {
   //this ignores a message that is not a calling the bot and messages from other bots
   if(!message.content.startsWith(PREFIX) || message.author.bot) return;
 
