@@ -5,7 +5,7 @@ const { FieldValue } = require('@google-cloud/firestore');
 module.exports ={
     name: "moviepoll",
     description: "Creates a movie poll with the top 10 movies and moves that movie into the viewed list",
-    execute(message,args){
+    async execute(message,args){
         let time1 = args[1];
         let regex1 = new RegExp(/^([0-9]{2}|[0-9]{1})[sSmM]$/);
         if(regex1.test(time1)) {

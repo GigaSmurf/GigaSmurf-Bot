@@ -6,7 +6,7 @@ const { FieldValue } = require('@google-cloud/firestore');
 module.exports ={
     name: "add",
     description: "Adds a movie to the unviewed list",
-    execute(message,args){
+    async execute(message,args){
         const snapshot1 = await db.collection('servers').where('name', '==', message.guild.name).get()
       let addmovie = args.slice(1).join(" ");
       if(snapshot1.empty){

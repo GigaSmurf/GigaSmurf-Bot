@@ -5,7 +5,7 @@ const { FieldValue } = require('@google-cloud/firestore');
 module.exports ={
     name: "viewed",
     description: "Displays the viewed list",
-    execute(message,args){
+    async execute(message,args){
         let arrray = [];
         let arrlength1 = 0;
         await db.collection('servers').where('name', '==', message.guild.name).get().then((snapshot) => {
