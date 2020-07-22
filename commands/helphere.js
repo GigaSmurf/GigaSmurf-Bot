@@ -13,7 +13,7 @@ module.exports ={
             {name: 'Game',value:"``-lol {summoner name}`` - Searches a LoL player\n``-scrims {gametype}`` - Initiates {gametype} Scrims\n``-join`` - Puts you into the scrims\n``-remove`` - Removes you from the scrims\n``-remove {@username}`` - Removes {@username} from the scrims\n``-players`` - Shows how many players are in the scrims\n``-teams`` - Shows the scrims lineup\n``-shuffle`` - Shuffles up the scrims lineup\n``-scrimsclear`` - Resets the scrims"},
             {name: 'Chess', value:"``-openinglist`` - Shows the list of openings I have available\n``-opening {opening name/keywords}`` - Shows the opening in detail"},
             {name: 'Movie',value:"``-add {movie}`` - Adds a movie to the unviewed list\n``-delete {movie}`` - Deletes a movie from the unviewed list\n``-unviewed`` - Displays the unviewed list\n``-viewed`` - Displays the viewed list\n``-watch {movie}`` - Moves the movie watched from the unviewed list to the viewed list\n``-viewdelete {movie}`` - Deletes a movie from the viewed list\n``-moviepoll <{time}m or {time}s>`` - Creates a poll from the unviewed list (top 10) for a certain amount of time"},
-            {name: 'Info', value: "``-help`` - Sends you a list of commands\n``-helphere`` - Sends the channel a list of commands\n``-link`` - Invite me to your server!\n``-gigasmurf`` - Reveals the **GigaSmurf**\n "}
+            {name: 'Info', value: "``-help`` - Sends you a list of commands\n``-helphere`` - Sends the channel a list of commands\n``-link`` - Invite me to your server!\n "}
         )
         .setFooter("Version: Beta 1.0");
 
