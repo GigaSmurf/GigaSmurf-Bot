@@ -270,7 +270,7 @@ function displayTeams(message){
 function shuffle(message){
   var swap, rand; 
 
-  for (let index = players.length; index > 0; index--) {
+  for (let index = players.length-1; index > 0; index--) {
     
     rand = Math.floor(Math.random() * index);
 
