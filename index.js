@@ -160,7 +160,14 @@ bot.on('message',async message => {
       }
       break;
     case 'join':
-      let player = message.author;
+        let player = "";
+      if(!args[1]){
+         player = message.author;
+      }
+      else{
+        player = args[1].substring(3,args[1].length-1);
+      }
+      
       status = 1;
       joinscrims(message, args, player);
       break;
