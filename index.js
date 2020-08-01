@@ -165,7 +165,7 @@ bot.on('message',async message => {
          player = message.author;
       }
       else{
-        player = args[1].substring(3,args[1].length-1);
+        player = args[1];
       }
       
       status = 1;
