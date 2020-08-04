@@ -214,6 +214,9 @@ bot.on('message',async message => {
     case 'link':
       bot.commands.get('link').execute(message,args);
       break;
+    case 'website':
+      bot.commands.get('website').execute(message,args);
+      break;
     case 'weather':
       bot.commands.get('weather').execute(message,args);
       break;

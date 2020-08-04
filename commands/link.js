@@ -7,7 +7,7 @@ module.exports ={
         const Embed = new Discord.MessageEmbed()
         .setColor('#520EF0')
         .setTitle("Invite GigaSmurf Bot")
-        .setURL('https://discord.com/api/oauth2/authorize?client_id=729786914365767813&permissions=8&scope=bot')
+        .setURL('https://discord.com/oauth2/authorize?client_id=729786914365767813&permissions=2080898161&scope=bot')
         .setThumbnail('https://i.redd.it/849hp76jous41.png');
 
         message.channel.send(Embed);
