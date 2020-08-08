@@ -11,6 +11,12 @@ module.exports ={
     let roomname = args[1];
       let gametype1 = args.slice(2).join(" ");
 
+
+      if(!args[1]){
+          message.channel.send("Invalid Command. Please type -help for the list of commands!");
+          return;
+      }
+
         // creates the matchroom
         db.collection('scrims').doc(roomname).set({
             name: roomname,
@@ -21,6 +27,6 @@ module.exports ={
           });
 
         message.channel.send(`The scrims match was created in "${roomname}".`);
-                
+
     }
 }  
