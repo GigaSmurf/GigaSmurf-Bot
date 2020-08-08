@@ -1,5 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+
+
 //initialize firebase firestore
 var admin = require("firebase-admin");
 
@@ -13,7 +15,7 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-
+// firebase ending initialization
 const PREFIX = "-"
 
 var version = 'beta';
@@ -82,9 +84,7 @@ bot.on('guildMemberRemove', member => {
 
   channel.send(`Lata ${member}`)
 });
-let status = 0;
-let players = [];
-let gametype = "";
+
 
 
 
@@ -152,58 +152,25 @@ bot.on('message',async message => {
       bot.commands.get('timeout').execute(message,args);
       break;
     case 'scrims':
-      if(status !== 0){ message.channel.send("Someone already started the scrims!");}
-      else{
-      status = 1;
-      gametype = args.slice(1).join(" ");
-      message.channel.send(`We are playing ${gametype} scrims!`);
-      }
+      bot.commands.get('scrims').execute(message,args);
       break;
     case 'join':
-        let player = "";
-      if(!args[1]){
-         player = message.author;
-      }
-      else{
-        player = args[1];
-      }
-      
-      status = 1;
-      joinscrims(message, args, player);
+      bot.commands.get('join').execute(message,args);
       break;
     case 'remove':
-      let removedplayer = "";
-      if(!args[1]){
-        players = players.filter(player => player!==message.author);
-        message.channel.send(`${message.author} has been removed from the scrims`)
-      }
-      else{
-        let removedplayer = args[1].substring(3,args[1].length-1);
-        players = players.filter(player => player.id!==removedplayer);
-        message.channel.send(`${args[1]} has been removed from the scrims`)
-      }
-
+      bot.commands.get('remove').execute(message,args);
       break;
     case 'players':
-      let num = players.length;
-      let allplayers = players.join();
-      if(players.length ===0){
-        message.channel.send("There are no players in the scrims at the moment 😢")
-      }
-      else{
-      message.channel.send(`${allplayers} are in the game and we have ${num} player(s)`);}
+      bot.commands.get('players').execute(message,args);
       break;
     case 'scrimsclear':
-      players = [];
-      status = 0;
-      gametype = "";
-      message.channel.send("The scrims have been cleared");
+      bot.commands.get('scrimsclear').execute(message,args);
       break;
     case 'shuffle':
-      shuffle(message);
+      bot.commands.get('shuffle').execute(message,args);
       break;
     case 'teams':
-      displayTeams(message);
+      bot.commands.get('teams').execute(message,args);
       break;
     case 'gigasmurf':
       bot.commands.get('gigasmurf').execute(message,args);
@@ -233,57 +200,10 @@ bot.on('message',async message => {
 }
 })
 
-function joinscrims(message,args,username){
-  message.channel.send(`${username} has joined the scrims`);
-  players.push(username);
-  if(players.length===10){
-    displayTeams(message);
-  }
-}
 
-function displayTeams(message){
-  const gameEmbed = new Discord.MessageEmbed()
-    .setColor('#0357FD')
-    .setTitle(`${gametype} Scrims`)
-    .setDescription('-shuffle to shuffle the teams')
-    .addFields(
-      {name: 'Team 1', value: `${players[0]}`,  inline: true},
-      { name: '\u200B', value: '\u200B', inline:true },
-      { name: 'Team 2', value:`${players[1]}`, inline: true}, 
-      {name: '\u200B', value: `${players[2]}`,  inline: true},
-      { name: '\u200B', value: '\u200B', inline:true },
-      { name: '\u200B', value:`${players[3]}`, inline: true},   
-      {name: '\u200B', value: `${players[4]}`,  inline: true},
-      { name: '\u200B', value: '\u200B', inline:true },
-      { name: '\u200B', value:`${players[5]}`, inline: true},   
-      {name: '\u200B', value: `${players[6]}`,  inline: true},
-      { name: '\u200B', value: '\u200B', inline:true },
-      { name: '\u200B', value:`${players[7]}`, inline: true},   
-      {name: '\u200B', value: `${players[8]}`,  inline: true},
-      { name: '\u200B', value: '\u200B', inline:true },
-      { name: '\u200B', value:`${players[9]}`, inline: true},    
-    )
-    .setTimestamp(new Date())
-    .setFooter('Good Luck Summoners!');
-    
-  message.channel.send(gameEmbed);
-}
 
-//shuffled using the fisher-yates shuffle algorithm
-function shuffle(message){
-  var swap, rand; 
 
-  for (let index = players.length-1; index > 0; index--) {
-    
-    rand = Math.floor(Math.random() * index);
 
-    swap = players[index];
-    players[index] = players[rand];
-    players[rand] = swap; 
-   }
-  message.channel.send("Players were shuffled");
-  displayTeams(message);
-  
-}
+
 
 bot.login(process.env.token);
