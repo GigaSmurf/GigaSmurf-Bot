@@ -18,7 +18,7 @@ module.exports ={
           })
         }).catch((error) => 
         {console.log(error)});
-    let roomnum = "Game"+rooms.toString();
+    let roomnum = "Game "+rooms.toString();
 
         // creates the matchroom
         db.collection('scrims').doc(roomnum).set({
