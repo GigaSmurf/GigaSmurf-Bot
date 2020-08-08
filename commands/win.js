@@ -23,16 +23,25 @@ module.exports ={
         
         const document = db.collection('scrims').doc(gamename);
 
-        await document.update({
-            Team1: FieldValue.delete(),
-            Team2: FieldValue.delete(),
-            Teams: FieldValue.delete(),
-            gametype: FieldValue.delete(),
-            name: FieldValue.delete()
-        })
+        document.get().then((docSnapshot) =>{
+            if(docSnapshot.exists){
+                        await document.update({
+                    Team1: FieldValue.delete(),
+                    Team2: FieldValue.delete(),
+                    Teams: FieldValue.delete(),
+                    gametype: FieldValue.delete(),
+                    name: FieldValue.delete()
+                })
 
-        await document.delete();
-        message.channel.send(`${winning} has won the scrims. This match room will now be closing.`);
+                await document.delete();
+                message.channel.send(`${winning} has won the scrims. This match room will now be closing.`);
+            }
+            else{
+                message.channel.send(`This game room does not exist.`);
+            }
+        })
+        
+        
         } 
         
        
