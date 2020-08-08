@@ -17,6 +17,9 @@ module.exports ={
                     name = doc.data().gametype; 
                 })
                 })
+                for(var i = players.length; i<10 ; i++){
+                    players.push(`Missing Player ${i+1}`);
+                }
 
 
 

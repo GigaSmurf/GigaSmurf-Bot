@@ -43,6 +43,10 @@ module.exports ={
         Teams: players
       });
 
+      for(var i = players.length; i<10 ; i++){
+        players.push(`Missing Player ${i+1}`);
+    }
+
 
     //   Displays the teams
         const gameEmbed = new Discord.MessageEmbed()
