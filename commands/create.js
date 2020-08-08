@@ -16,7 +16,8 @@ module.exports ={
           snapshot.docs.forEach(doc =>{
             rooms = doc.data().current;
           })
-        })
+        }).catch((error) => 
+        {console.log(error)});
     let roomnum = "Game"+rooms.toString();
 
         // creates the matchroom
