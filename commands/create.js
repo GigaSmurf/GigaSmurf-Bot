@@ -8,37 +8,19 @@ module.exports ={
     description: "Creates an online scrims",
     async execute(message,args){
         
-    let rooms = 0;
-      let gametype1 = args.slice(1).join(" ");
-
-        // retrieving the data of the amount of match rooms 
-        await db.collection('scrims').where('name','==','games').get().then((snapshot) => {
-          snapshot.docs.forEach(doc =>{
-            rooms = doc.data().current;
-          })
-        }).catch((error) => 
-        {console.log(error)});
-    let roomnum = "Game "+rooms.toString();
+    let roomname = args[1];
+      let gametype1 = args.slice(2).join(" ");
 
         // creates the matchroom
-        db.collection('scrims').doc(roomnum).set({
-            name: roomnum,
+        db.collection('scrims').doc(roomname).set({
+            name: roomname,
             Teams: [],
             gametype: gametype1,
             Team1: "Team 1",
             Team2: "Team 2"
           });
 
-        message.channel.send(`The scrims match was created in "Game ${rooms.toString()}". The match number is ${rooms.toString()}`);
-
-        const updater = db.collection('scrims').doc("games");
-          rooms++;
-        updater.update({
-          current: rooms
-        });
-
-    
-
-        
+        message.channel.send(`The scrims match was created in "${roomname}".`);
+                
     }
 }  
