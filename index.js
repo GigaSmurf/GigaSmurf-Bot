@@ -172,6 +172,9 @@ bot.on('message',async message => {
     case 'teams':
       bot.commands.get('teams').execute(message,args);
       break;
+    case 'create':
+      bot.commands.get('create').execute(message,args);
+      break;
     case 'gigasmurf':
       bot.commands.get('gigasmurf').execute(message,args);
       break;
