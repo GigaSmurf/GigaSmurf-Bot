@@ -22,7 +22,7 @@ module.exports ={
         let gamename = "Game " + args[1];
         
         const document = db.collection('scrims').doc(gamename);
-        const snapshot1 = await db.collection('servers').where('name', '==', gamename).get()
+        const snapshot1 = await db.collection('scrims').where('name', '==', gamename).get()
         if(snapshot1.empty){
             message.channel.send("This match does not exist.");
         }
