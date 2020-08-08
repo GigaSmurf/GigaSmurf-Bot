@@ -95,7 +95,7 @@ bot.on('message',async message => {
   //this creates an array of what the user is commanding
   let args = message.content.substring(PREFIX.length).split(" ");
 
-  switch (args[0]){
+  switch (args[0].toLowerCase()){
 
     case "help":
       bot.commands.get('help').execute(message,args);
@@ -175,7 +175,7 @@ bot.on('message',async message => {
     case 'gigasmurf':
       bot.commands.get('gigasmurf').execute(message,args);
       break;
-    case 'Spinjamin':
+    case 'spinjamin':
       bot.commands.get('Spinjamin').execute(message,args);
       break;
     case 'link':
