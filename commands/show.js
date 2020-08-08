@@ -9,6 +9,14 @@ module.exports ={
     async execute(message,args){
         
         let matchroom = args[1];
+
+
+        const snapshot1 = await db.collection('scrims').where('name', '==', matchroom).get()
+                
+        if(snapshot1.empty){
+                    message.channel.send("This match does not exist.");
+            }     
+        else{  
         // retrieving the data on the teams 
         let players = [];
         let name = "";
@@ -53,6 +61,6 @@ module.exports ={
       .setFooter('Good Luck Summoners!');
       
     message.channel.send(gameEmbed);
-                
+     }            
     }
 }  
