@@ -12,7 +12,7 @@ module.exports ={
       let gametype1 = args.slice(1).join(" ");
 
         // retrieving the data of the amount of match rooms 
-        await db.collection('scrims').doc("games").get().then((snapshot) => {
+        await db.collection('scrims').where('name','==','games').get().then((snapshot) => {
           snapshot.docs.forEach(doc =>{
             rooms = doc.data().current;
           })
