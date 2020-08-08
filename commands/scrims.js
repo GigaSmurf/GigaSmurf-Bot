@@ -43,7 +43,8 @@ module.exports ={
         const updater = db.collection('scrims').doc(message.guild.name);
       
       updater.update({
-        status: 1
+        status: 1,
+        gametype: gametype1
       });
       
         message.channel.send(`We are playing ${gametype1} scrims!`);

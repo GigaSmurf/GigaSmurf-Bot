@@ -35,7 +35,8 @@ module.exports ={
     const updater = db.collection('scrims').doc(message.guild.name);
       
       updater.update({
-        Teams: FieldValue.arrayUnion(player)
+        Teams: FieldValue.arrayUnion(player),
+        status: 1
       });
       
         message.channel.send(`${player} has joined the scrims`);
