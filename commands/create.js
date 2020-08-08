@@ -29,7 +29,7 @@ module.exports ={
             Team2: "Team 2"
           });
 
-        message.channel.send(`The scrims match was created in "Game ${rooms.toString}". The match number is ${rooms.toString}`);
+        message.channel.send(`The scrims match was created in "Game ${rooms.toString()}". The match number is ${rooms.toString()}`);
 
         const updater = db.collection('scrims').doc("games");
           rooms++;
