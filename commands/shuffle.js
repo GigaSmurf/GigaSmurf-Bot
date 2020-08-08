@@ -39,7 +39,7 @@ module.exports ={
     // Updates the shuffled teams to the database
     const updater = db.collection('scrims').doc(message.guild.name);
       
-      updater.update({
+      await updater.update({
         Teams: players
       });
 
