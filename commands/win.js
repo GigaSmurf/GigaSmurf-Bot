@@ -9,8 +9,10 @@ module.exports ={
     async execute(message,args){
         let winning = args[2];
 
-        if(!args[1]){
-            message.channel.send(`${winning} has won the scrims.`);
+        // local server win
+        if(!args[2]){
+            let winning1= args[1];
+            message.channel.send(`Team ${winning1} has won the scrims.`);
         }
 
         // for cross server win
