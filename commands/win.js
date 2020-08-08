@@ -9,7 +9,7 @@ module.exports ={
     async execute(message,args){
         let winning = args[2];
 
-        if(args[1].toLowerCase()=="local"){
+        if(!args[1]){
             message.channel.send(`${winning} has won the scrims.`);
         }
 
