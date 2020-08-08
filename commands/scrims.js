@@ -46,9 +46,9 @@ module.exports ={
         status: 1
       });
       
-      
+        message.channel.send(`We are playing ${gametype1} scrims!`);
       }
 
-        message.channel.send(`We are playing ${gametype1} scrims!`);
+        
     }
 }  

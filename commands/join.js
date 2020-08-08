@@ -11,7 +11,7 @@ module.exports ={
     // Gets the player name 
         let player = "";
       if(!args[1]){
-         player = message.author;
+         player = JSON.parse(JSON.stringify(message.author));
       }
       else{
         player = args[1];
