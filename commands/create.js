@@ -8,8 +8,8 @@ module.exports ={
     description: "Creates an online scrims",
     async execute(message,args){
         
-    let roomname = args[1];
-      let gametype1 = args.slice(2).join(" ");
+    let roomname = args.slice(1).join(" ");
+      
 
 
       if(!args[1]){
@@ -21,7 +21,7 @@ module.exports ={
         db.collection('scrims').doc(roomname).set({
             name: roomname,
             Teams: [],
-            gametype: gametype1,
+            gametype: roomname,
             Team1: "Team 1",
             Team2: "Team 2",
             number: 0
