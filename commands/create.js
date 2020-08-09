@@ -23,7 +23,8 @@ module.exports ={
             Teams: [],
             gametype: gametype1,
             Team1: "Team 1",
-            Team2: "Team 2"
+            Team2: "Team 2",
+            number: 0
           });
 
         message.channel.send(`The scrims match was created in "${roomname}".`);

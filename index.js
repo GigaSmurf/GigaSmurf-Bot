@@ -181,6 +181,9 @@ bot.on('message',async message => {
     case 'win':
       bot.commands.get('win').execute(message,args);
       break;
+    case 'match':
+      bot.commands.get('match').execute(message,args);
+      break;
     case 'gigasmurf':
       bot.commands.get('gigasmurf').execute(message,args);
       break;
