@@ -14,17 +14,17 @@ module.exports ={
         // 0 = command, 1 = matchroom, 2 = players  
 
         const snapshot1 = await db.collection('scrims').where('name', '==', matchroom).get()
-         if(!args.length>=7){
-            message.channel.send("Please make sure you have added all 5 of your players or check -help for more information.");
-
-        }
-       
+                
         if(snapshot1.empty){
                     message.channel.send("This match does not exist.");
                     return;
         }  
 
-        
+        if(!args.length>=7){
+            message.channel.send("Please make sure you have added all 5 of your players or check -help for more information.");
+
+        }
+
         const updater = db.collection('scrims').doc(matchroom);
         // Adds the team members to the list
             for(var i = 1; i<6; i++){
