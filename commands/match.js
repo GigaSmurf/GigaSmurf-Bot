@@ -8,7 +8,7 @@ module.exports ={
     description: "Adds the team name to the match room",
     async execute(message,args){
         
-        let matchroom = args[1];
+        let matchroom = args.slice(6).join(" ");
         let teamname = message.guild.name;
 
         // 0 = command, 1 = matchroom, 2 = players  
@@ -20,14 +20,14 @@ module.exports ={
                     return;
         }  
 
-        if(!args.length==7){
+        if(!args.length>=7){
             message.channel.send("Please make sure you have added all 5 of your players or check -help for more information.");
 
         }
 
         const updater = db.collection('scrims').doc(matchroom);
         // Adds the team members to the list
-            for(var i = 2; i<7; i++){
+            for(var i = 1; i<6; i++){
     
                 await updater.update({
                     Teams: FieldValue.arrayUnion(args[i])
