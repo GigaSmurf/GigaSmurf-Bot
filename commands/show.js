@@ -20,10 +20,14 @@ module.exports ={
         // retrieving the data on the teams 
         let players = [];
         let name = "";
+        let Teama = "Team 1";
+        let Teamb = "Team 2";
         await db.collection('scrims').where('name', '==', matchroom).get().then((snapshot) => {
         snapshot.docs.forEach(doc =>{
             players = doc.data().Teams;
             name = doc.data().gametype; 
+            Teama = doc.data().Team1;
+            Teamb = doc.data().Team2;
         })
         })
         for(var i = players.length; i<10 ; i++){
@@ -37,9 +41,9 @@ module.exports ={
       .setTitle(`${name} Scrims`)
       .setDescription('-win {match roomname} {team name} for the winners to gain some elo!')
       .addFields(
-        {name: 'Team 1', value: `${players[0]}`,  inline: true},
+        {name: `${Teama}`, value: `${players[0]}`,  inline: true},
         { name: '\u200B', value: '\u200B', inline:true },
-        { name: 'Team 2', value:`${players[5]}`, inline: true}, 
+        { name: `${Teamb}`, value:`${players[5]}`, inline: true}, 
 
         {name: '\u200B', value: `${players[1]}`,  inline: true},
         { name: '\u200B', value: '\u200B', inline:true },
