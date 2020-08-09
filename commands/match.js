@@ -46,7 +46,8 @@ module.exports ={
             
          if(status==0){
             await updater.update({
-                Team1: matchroom 
+                Team1: matchroom,
+                number: 1
             });
          }
          else{
