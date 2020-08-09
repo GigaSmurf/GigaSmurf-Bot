@@ -7,7 +7,7 @@ module.exports ={
     name: "win",
     description: "Deletes the Matchroom, and adding elo to the winning team",
     async execute(message,args){
-        let winning = args.slice(2).join(" ");
+        
 
         // local server win
         if(!args[2]){
@@ -17,9 +17,9 @@ module.exports ={
 
         // for cross server win
         else{
-
-        
-                let gamename =  args[1];
+                let winning = "";
+                let side = args[1];
+                let gamename =  args.slice(2).join(" ");
                 
                 const document = db.collection('scrims').doc(gamename);
                 const snapshot1 = await db.collection('scrims').where('name', '==', gamename).get()
@@ -28,6 +28,22 @@ module.exports ={
                     message.channel.send("This match does not exist.");
                 }
                 else{
+                    let Teama = "Team 1";
+                    let Teamb = "Team 2";
+                    await db.collection('scrims').where('name', '==', gamename).get().then((snapshot) => {
+                        snapshot.docs.forEach(doc =>{
+                          Teama = doc.data().Team1;
+                          Teamb = doc.data().Team2;
+                        })
+                      })
+
+                      if(side=="1"){
+                        winning = Teama;
+                      }
+                      else{
+                          winning = Teamb;
+                      }
+
                     await document.update({
                         Team1: FieldValue.delete(),
                         Team2: FieldValue.delete(),
