@@ -36,9 +36,11 @@ module.exports ={
 
          // retrieving the data on the teams 
         let status = 0;
+        let Teama = "";
          await db.collection('scrims').where('name', '==', matchroom).get().then((snapshot) => {
          snapshot.docs.forEach(doc =>{
              status = doc.data().number;
+               Teama = doc.data().Team1;
          })
         })
 
@@ -51,9 +53,18 @@ module.exports ={
             });
          }
          else{
-            await updater.update({
+            if(teamname==Teama){
+                await updater.update({
+                  Team1: `${teamname} 1`,
+                  Team2: `${teamname} 2`
+                });
+            }
+            else{
+              await updater.update({
                 Team2: teamname 
-            });
+            });  
+            }
+            
          }
             
          message.channel.send(`The team ${teamname} is now in the match room ${matchroom}. Type -show {matchroom} to check the teams.`)
