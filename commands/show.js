@@ -8,7 +8,7 @@ module.exports ={
     description: "Shows the teams for this match room",
     async execute(message,args){
         
-        let matchroom = args[1];
+        let matchroom = args.slice(1).join(" ");
 
 
         const snapshot1 = await db.collection('scrims').where('name', '==', matchroom).get()
