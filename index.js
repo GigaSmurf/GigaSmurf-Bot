@@ -89,14 +89,42 @@ bot.on('guildMemberRemove', member => {
 
 
 bot.on('message',async message => {
+  // Gets the JSON file
+  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+  // If the server does not have a custom prefix then stores the default prefix in prefixes[message.guild.id] object
+  if(!prefixes[message.guild.id]){
+    prefixes[message.guild.id] = {
+      prefixes: PREFIX
+    };
+  }
+  // Gets the prefix from either the file or takes the default one if server does not have a custom prefix
+  let prefix = prefixes[message.guild.id].prefixes;
+
   //this ignores a message that is not a calling the bot and messages from other bots
-  if(!message.content.startsWith(PREFIX) || message.author.bot) return;
+  if(!message.content.startsWith(prefix) || message.author.bot) return;
 
   //this creates an array of what the user is commanding
-  let args = message.content.substring(PREFIX.length).split(" ");
+  let args = message.content.substring(prefix.length).split(" ");
 
   switch (args[0].toLowerCase()){
+    case 'prefix':
+      // Changes the prefix
+      prefixes[message.guild.id] = {
+        prefixes: args[1]
+      };
+      // Writes the prefix to the database
+      fs.writeFile("./prefixes.json", JSON.stringify(prefixes), (err) =>{
+        if(err) console.log(err)
+      });
 
+      // Embed showing what the prefix has been changed to
+      let sEmbed = new Discord.MessageEmbed()
+      .setColor("#FF9900")
+      .setTitle("Prefix Set!")
+      .setDescription(`Set from ${prefix} to ${args[1]}`);
+
+      message.channel.send(sEmbed);
+      break;
     case "help":
       bot.commands.get('help').execute(message,args);
       break;
