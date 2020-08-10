@@ -8,12 +8,12 @@ module.exports ={
     description: "Deletes a movie from the viewed list",
     async execute(message,args){
         let delmovie1 = args.slice(1).join(" ");
-        const snapshot10 = await db.collection('servers').where('name', '==', message.guild.name).get()
+        const snapshot10 = await db.collection('servers').where('name', '==', message.guild.id).get()
         if(snapshot10.empty){
           message.channel.send("There are no movies added yet my friend...")
         }
         else{
-          const updater10 = db.collection('servers').doc(message.guild.name);
+          const updater10 = db.collection('servers').doc(message.guild.id);
   
           updater10.update({
             viewed: FieldValue.arrayRemove(delmovie1)

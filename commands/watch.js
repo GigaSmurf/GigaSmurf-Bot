@@ -7,11 +7,11 @@ module.exports ={
     name: "watch",
     description: "Moves a movie from the unviewed list to the viewed list",
     async execute(message,args){
-        const snapshot7 = await db.collection('servers').where('name', '==', message.guild.name).get()
+        const snapshot7 = await db.collection('servers').where('name', '==', message.guild.id).get()
       let watched = args.slice(1).join(" ");
       if(snapshot7.empty){
-          db.collection('servers').doc(message.guild.name).set({
-            name: message.guild.name,
+          db.collection('servers').doc(message.guild.id).set({
+            name: message.guild.id,
             viewed: [watched],
             unviewed: []
           });
@@ -19,7 +19,7 @@ module.exports ={
       }
       else{
       
-      const updater1 = db.collection('servers').doc(message.guild.name);
+      const updater1 = db.collection('servers').doc(message.guild.id);
       
       updater1.update({
         viewed: FieldValue.arrayUnion(watched),

@@ -9,7 +9,7 @@ module.exports ={
     async execute(message,args){
         let unarrray = [];
         let arrlength = 0;
-        await db.collection('servers').where('name', '==', message.guild.name).get().then((snapshot) => {
+        await db.collection('servers').where('name', '==', message.guild.id).get().then((snapshot) => {
           snapshot.docs.forEach(doc =>{
             unarrray = doc.data().unviewed;
             arrlength = unarrray.length;

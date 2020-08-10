@@ -22,7 +22,7 @@ module.exports ={
             //unviewed list embed
             let unarrray1 = [];
            let arrlength9 = 0;
-          await db.collection('servers').where('name', '==', message.guild.name).get().then((snapshot) => {
+          await db.collection('servers').where('name', '==', message.guild.id).get().then((snapshot) => {
           snapshot.docs.forEach(doc =>{
           unarrray1 = doc.data().unviewed;
           arrlength9 = unarrray1.length;
@@ -142,7 +142,7 @@ module.exports ={
 
                 await message.channel.send(resultsEmbed1);
 
-                const updater99 = db.collection('servers').doc(message.guild.name);
+                const updater99 = db.collection('servers').doc(message.guild.id);
       
                   updater99.update({
                     viewed: FieldValue.arrayUnion(unarrray1[maxindex]),

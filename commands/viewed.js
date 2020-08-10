@@ -8,7 +8,7 @@ module.exports ={
     async execute(message,args){
         let arrray = [];
         let arrlength1 = 0;
-        await db.collection('servers').where('name', '==', message.guild.name).get().then((snapshot) => {
+        await db.collection('servers').where('name', '==', message.guild.id).get().then((snapshot) => {
           snapshot.docs.forEach(doc =>{
             arrray = doc.data().viewed;
             arrlength1 = arrray.length;

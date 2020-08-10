@@ -7,11 +7,11 @@ module.exports ={
     name: "add",
     description: "Adds a movie to the unviewed list",
     async execute(message,args){
-        const snapshot1 = await db.collection('servers').where('name', '==', message.guild.name).get()
+        const snapshot1 = await db.collection('servers').where('name', '==', message.guild.id).get()
       let addmovie = args.slice(1).join(" ");
       if(snapshot1.empty){
-          db.collection('servers').doc(message.guild.name).set({
-            name: message.guild.name,
+          db.collection('servers').doc(message.guild.id).set({
+            name: message.guild.id,
             viewed: [],
             unviewed: [addmovie]
           });
@@ -19,7 +19,7 @@ module.exports ={
       }
       else{
       
-      const updater = db.collection('servers').doc(message.guild.name);
+      const updater = db.collection('servers').doc(message.guild.id);
       
       updater.update({
         unviewed: FieldValue.arrayUnion(addmovie)
