@@ -9,44 +9,37 @@ module.exports ={
     async execute(message,args){
         
         let status1 = 0;
-        let gid = "";
       let gametype1 = args.slice(1).join(" ");
-      const snapshot1 = await db.collection('scrims').where('name', '==', message.guild.name).get()
+      const snapshot1 = await db.collection('scrims').where('name', '==', message.guild.id).get()
 
       //  Checks if the server already created a document, if not then starts the scrims and creates the document 
       if(snapshot1.empty){
           
-          db.collection('scrims').doc(message.guild.name).set({
-            name: message.guild.name,
+          db.collection('scrims').doc(message.guild.id).set({
+            name: message.guild.id,
             Teams: [] ,
             status: 1,
-            gametype: gametype1,
-            id: message.guild.id
+            gametype: gametype1
           });
           
       }
 
       // if the server already has a document then, just get the status to see if the scrims already started 
       else{
-        await db.collection('scrims').where('name', '==', message.guild.name).get().then((snapshot) => {
+        await db.collection('scrims').where('name', '==', message.guild.id).get().then((snapshot) => {
           snapshot.docs.forEach(doc =>{
             status1 = doc.data().status;
-            gid = doc.data().id;
           })
         })
       }
-        
-      if(!message.guild.id==gid){
-          message.channel.send("Please use the cross-server functions for your scrims as someone has the exact same server name as you...")
-          return;
-      }
+    
 
       // second if else, checks to see if someone already started the scrims for the server 
       if(status1 !== 0){ message.channel.send("Someone already started the scrims!");}
 
       // if someone has not started the scrims yet then this runs
       else{
-        const updater = db.collection('scrims').doc(message.guild.name);
+        const updater = db.collection('scrims').doc(message.guild.id);
       
       updater.update({
         status: 1,

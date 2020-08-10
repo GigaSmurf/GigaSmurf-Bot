@@ -8,7 +8,7 @@ module.exports ={
     description: "Clears the scrims",
     async execute(message,args){
 
-        const updater = db.collection('scrims').doc(message.guild.name);
+        const updater = db.collection('scrims').doc(message.guild.id);
 
         updater.update({
             Teams:[],

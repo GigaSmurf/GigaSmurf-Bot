@@ -18,12 +18,12 @@ module.exports ={
       }
 
 
-      const snapshot1 = await db.collection('scrims').where('name', '==', message.guild.name).get()
+      const snapshot1 = await db.collection('scrims').where('name', '==', message.guild.id).get()
       //  Checks if the server already created a document, if not then starts the scrims and creates the document
       if(snapshot1.empty){
           
-        db.collection('scrims').doc(message.guild.name).set({
-          name: message.guild.name,
+        db.collection('scrims').doc(message.guild.id).set({
+          name: message.guild.id,
           Teams: [player] ,
           status: 1,
           gametype: ""
@@ -32,7 +32,7 @@ module.exports ={
     }
 
     // Adds the player 
-    const updater = db.collection('scrims').doc(message.guild.name);
+    const updater = db.collection('scrims').doc(message.guild.id);
       
       updater.update({
         Teams: FieldValue.arrayUnion(player),

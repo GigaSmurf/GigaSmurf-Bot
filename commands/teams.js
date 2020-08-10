@@ -11,7 +11,7 @@ module.exports ={
              // retrieving the data on the teams 
                 let players = [];
                 let name = "";
-                await db.collection('scrims').where('name', '==', message.guild.name).get().then((snapshot) => {
+                await db.collection('scrims').where('name', '==', message.guild.id).get().then((snapshot) => {
                 snapshot.docs.forEach(doc =>{
                     players = doc.data().Teams;
                     name = doc.data().gametype; 

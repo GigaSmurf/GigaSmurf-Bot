@@ -14,7 +14,7 @@ module.exports ={
         // retrieving the data on the teams 
         let players = [];
         let arrlength = 0;
-        await db.collection('scrims').where('name', '==', message.guild.name).get().then((snapshot) => {
+        await db.collection('scrims').where('name', '==', message.guild.id).get().then((snapshot) => {
           snapshot.docs.forEach(doc =>{
             players = doc.data().Teams;
             arrlength = players.length;
@@ -41,7 +41,7 @@ module.exports ={
         .setTitle('Players List')
         .setDescription(stringcheese)
         .addField('Total Players: ', arrlength, true);
-        
+
         message.channel.send(Embeding); 
     }
 }

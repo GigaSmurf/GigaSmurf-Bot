@@ -17,7 +17,7 @@ module.exports ={
       }
 
 
-      const snapshot1 = await db.collection('scrims').where('name', '==', message.guild.name).get()
+      const snapshot1 = await db.collection('scrims').where('name', '==', message.guild.id).get()
       //  Checks if the server already created a document,
       if(snapshot1.empty){
           
@@ -26,7 +26,7 @@ module.exports ={
     }
 
     // Removes the player 
-    const updater = db.collection('scrims').doc(message.guild.name);
+    const updater = db.collection('scrims').doc(message.guild.id);
       
       updater.update({
         Teams: FieldValue.arrayRemove(player)

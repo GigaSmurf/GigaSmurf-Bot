@@ -11,7 +11,7 @@ module.exports ={
       // retrieving the data on the teams 
     let players = [];
     let name = "";
-    await db.collection('scrims').where('name', '==', message.guild.name).get().then((snapshot) => {
+    await db.collection('scrims').where('name', '==', message.guild.id).get().then((snapshot) => {
     snapshot.docs.forEach(doc =>{
         players = doc.data().Teams;
         name = doc.data().gametype; 
@@ -37,7 +37,7 @@ module.exports ={
     message.channel.send("Players were shuffled");
     
     // Updates the shuffled teams to the database
-    const updater = db.collection('scrims').doc(message.guild.name);
+    const updater = db.collection('scrims').doc(message.guild.id);
       
       await updater.update({
         Teams: players
