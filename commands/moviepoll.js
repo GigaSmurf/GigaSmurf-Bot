@@ -35,9 +35,11 @@ module.exports ={
         }
         if(unarrray1.length == 0){
           stringcheese9 = "Type ``-add {movie}`` to add your watched movies to the unviewed list!";
+          return;
         }
         if(arrlength9 == 1){
           message.channel.send("Need at least 2 movies to vote on dude!");
+          return;
         }
       
           const Embeding6 = new Discord.MessageEmbed()
