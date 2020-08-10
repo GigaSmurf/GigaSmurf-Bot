@@ -9,6 +9,7 @@ module.exports ={
     async execute(message,args){
         
         let status1 = 0;
+        let gid = "";
       let gametype1 = args.slice(1).join(" ");
       const snapshot1 = await db.collection('scrims').where('name', '==', message.guild.name).get()
 
@@ -19,7 +20,8 @@ module.exports ={
             name: message.guild.name,
             Teams: [] ,
             status: 1,
-            gametype: gametype1
+            gametype: gametype1,
+            id: message.guild.id
           });
           
       }
@@ -29,11 +31,15 @@ module.exports ={
         await db.collection('scrims').where('name', '==', message.guild.name).get().then((snapshot) => {
           snapshot.docs.forEach(doc =>{
             status1 = doc.data().status;
+            gid = doc.data().id;
           })
         })
       }
         
-
+      if(!message.guild.id==gid){
+          message.channel.send("Please use the cross-server functions for your scrims as someone has the exact same server name as you...")
+          return;
+      }
 
       // second if else, checks to see if someone already started the scrims for the server 
       if(status1 !== 0){ message.channel.send("Someone already started the scrims!");}
