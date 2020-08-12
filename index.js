@@ -72,7 +72,7 @@ bot.on('guildMemberAdd', member => {
   });
   }
   else{
-    channel.send(`Welcome to our server, ${member}`);
+    channel.send(`Welcome to the ${member.guild.name}, ${member}`);
   }
 
 });
