@@ -89,6 +89,17 @@ bot.on('guildMemberRemove', member => {
 
 
 bot.on('message',async message => {
+  //Checks if the user messages GigaSmurf in the dms
+  
+  if(message.guild == null && message.author.id!='729786914365767813'){
+    message.channel.send("Hey fellow smurf, my commands only work on discord servers 😓");
+    return;
+  }
+  // GigaSmurf's Message
+  if(message.guild == null && message.author.id=='729786914365767813')
+  {
+    return;
+  }
   // Gets the JSON file
   let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
   // If the server does not have a custom prefix then stores the default prefix in prefixes[message.guild.id] object
