@@ -118,6 +118,9 @@ bot.on('message',async message => {
   let args = message.content.substring(prefix.length).split(" ");
 
   switch (args[0].toLowerCase()){
+    case 'live':
+      bot.commands.get('live').execute(message,args);
+      break;
     case 'prefix':
       // Changes the prefix
       prefixes[message.guild.id] = {
