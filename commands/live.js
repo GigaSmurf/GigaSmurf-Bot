@@ -42,8 +42,8 @@ module.exports = {
           const h1 = box.height;                           // area height
           console.log(`${x1}, ${y1}, ${w1}, ${h1}`);
 
-        //   Takes screenshot path.join(__dirname, `../static/images/${id}.png`)
-           await page.screenshot({path: `../images/${person}.png`, clip: {x: x1, y: y1, width: w1, height: h1}, omitBackground: true });
+        //   Takes screenshot path.join(__dirname, `../static/images/${id}.png`)   path.join(__dirname, 'file.json')
+           await page.screenshot({path: path.join(__dirname, `images/${person}.png`), clip: {x: x1, y: y1, width: w1, height: h1}, omitBackground: true });
           // await page.screenshot({'path': 'images/esports.png', 'clip': {'x': x, 'y': y, 'width': w, 'height': h}});  
           console.log("screenshot taken");
         //   Embed
