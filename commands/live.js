@@ -45,7 +45,7 @@ module.exports = {
         //   Takes screenshot
            await page.screenshot({path: `../images/${person}.png`, clip: {x: x1, y: y1, width: w1, height: h1}, omitBackground: true });
           // await page.screenshot({'path': 'images/esports.png', 'clip': {'x': x, 'y': y, 'width': w, 'height': h}});  
-
+          console.log("screenshot taken");
         //   Embed
           const liveshot = new Discord.MessageEmbed()
           .setColor('#5383e9')
@@ -57,7 +57,7 @@ module.exports = {
     
           await message.channel.send(liveshot);
         // await message.channel.send(`Here is the summoner ${display}`, {files: ["./images/esports.png"]});
-
+        console.log("Embed works");
         // Closes the browser
           await browser.close();
 

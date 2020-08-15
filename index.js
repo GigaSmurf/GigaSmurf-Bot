@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const puppetteer = require('puppeteer');
+
 
 //initialize firebase firestore
 var admin = require("firebase-admin");
