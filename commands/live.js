@@ -40,23 +40,25 @@ module.exports = {
           const y1 = box.y;                                // coordinate y
           const w1 = box.width;                            // area width
           const h1 = box.height;                           // area height
-          console.log(`${x1}, ${y1}, ${w1}, ${h1}`);
+          // console.log(`${x1}, ${y1}, ${w1}, ${h1}`);
         //   Takes screenshot path.join(__dirname, `../static/images/${id}.png`)   path.join(__dirname, 'file.json')
-           await page.screenshot({path: `images/${person}.png`, clip: {x: x1, y: y1, width: w1, height: h1}, omitBackground: true });
+          const imagebuffer =  await page.screenshot({ clip: {x: x1, y: y1, width: w1, height: h1}, omitBackground: true });
+
           // await page.screenshot({'path': 'images/esports.png', 'clip': {'x': x, 'y': y, 'width': w, 'height': h}});  
-          console.log("screenshot taken");
+          // console.log("screenshot taken");
         //   Embed
-          // const liveshot = new Discord.MessageEmbed()
-          // .setColor('#5383e9')
-          // .setTitle(`${display}'s Live Game`)
-          // .setURL(`https://na.op.gg/summoner/userName=${name1}`)
-          // .setDescription("")
-          // .attachFiles([`../images/${person}.png`])
-          // .setImage(`attachment://${person}.png`);
+          const liveshot = new Discord.MessageEmbed()
+          .setColor('#5383e9')
+          .setTitle(`${display}'s Live Game`)
+          .setURL(`https://na.op.gg/summoner/userName=${name1}`)
+          .setDescription("")
+          .attachFiles([{name:`${person}.png`, attachment: imagebuffer}])
+          .setImage(`attachment://${person}.png`);
     
-          // await message.channel.send(liveshot);
-         await message.channel.send(`Here is the summoner ${display}`, {files: ["../images/esports.png"]});
-        console.log("Embed works");
+          await message.channel.send(liveshot);
+
+        //  await message.channel.send(`Here is the summoner ${display}`, {files: ["../images/esports.png"]});
+        // console.log("Embed works");
         // Closes the browser
           await browser.close();
 
@@ -68,15 +70,15 @@ module.exports = {
           }
 
         //   Deletes Image after try catch in case error after saving the image
-            const path = `../images/${person}.png`;
+        //     const path = `../images/${person}.png`;
 
-        fs.unlink(path, (err) => {
-          if (err) {
-            console.error(err)
-            return
-          }
+        // fs.unlink(path, (err) => {
+        //   if (err) {
+        //     console.error(err)
+        //     return
+        //   }
         
-          //file removed
-        })
+        //   //file removed
+        // })
     }
 }
