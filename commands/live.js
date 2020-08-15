@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 const puppetteer = require('puppeteer');
+const chromium = require('chromium');
 
 module.exports = {
     name: 'live',
@@ -10,7 +11,7 @@ module.exports = {
       let display = args.slice(1).join(" ");
         let person = message.author.id;
       try{
-        const browser = await puppetteer.launch();
+        const browser = await puppetteer.launch({executablePath: chromium.path});
           const page = await browser.newPage();
           // const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
         //w 1920, h 1200 
