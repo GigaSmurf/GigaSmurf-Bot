@@ -124,7 +124,12 @@ bot.on('message',async message => {
       let display = args.slice(1).join(" ");
         let person = message.author.id;
       try{
-        const browser = await puppetteer.launch();
+        const browser = await puppetteer.launch({
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+          ],
+        });
           const page = await browser.newPage();
           // const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
         //w 1920, h 1200 
