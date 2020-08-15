@@ -46,16 +46,16 @@ module.exports = {
           // await page.screenshot({'path': 'images/esports.png', 'clip': {'x': x, 'y': y, 'width': w, 'height': h}});  
           console.log("screenshot taken");
         //   Embed
-          const liveshot = new Discord.MessageEmbed()
-          .setColor('#5383e9')
-          .setTitle(`${display}'s Live Game`)
-          .setURL(`https://na.op.gg/summoner/userName=${name1}`)
-          .setDescription("")
-          .attachFiles([`../images/${person}.png`])
-          .setImage(`attachment://${person}.png`);
+          // const liveshot = new Discord.MessageEmbed()
+          // .setColor('#5383e9')
+          // .setTitle(`${display}'s Live Game`)
+          // .setURL(`https://na.op.gg/summoner/userName=${name1}`)
+          // .setDescription("")
+          // .attachFiles([`../images/${person}.png`])
+          // .setImage(`attachment://${person}.png`);
     
-          await message.channel.send(liveshot);
-        // await message.channel.send(`Here is the summoner ${display}`, {files: ["./images/esports.png"]});
+          // await message.channel.send(liveshot);
+         await message.channel.send(`Here is the summoner ${display}`, {files: ["../images/esports.png"]});
         console.log("Embed works");
         // Closes the browser
           await browser.close();
