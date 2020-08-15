@@ -5,7 +5,7 @@ const puppetteer = require('puppeteer');
 module.exports = {
     name: 'live',
     description: "This displays the players live match",
-    execute(message, args){
+    async execute(message, args){
         let name1 = args.slice(1).join("+");
       let display = args.slice(1).join(" ");
         let person = message.author.id;
