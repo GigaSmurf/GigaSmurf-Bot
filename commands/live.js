@@ -10,7 +10,7 @@ module.exports = {
       let display = args.slice(1).join(" ");
         let person = message.author.id;
       try{
-        const browser = await puppetteer.launch({headless: false,args: ["--no-sandbox"]});
+        const browser = await puppetteer.launch();
           const page = await browser.newPage();
           // const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
         //w 1920, h 1200 
