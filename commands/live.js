@@ -11,7 +11,7 @@ module.exports = {
       let display = args.slice(1).join(" ");
         let person = message.author.id;
       try{
-        const browser = await puppetteer.launch({executablePath: chromium.path});
+        const browser = await puppetteer.launch({executablePath: './node_modules/chromium/lib/chromium/chrome-win/chrome.exe'});
           const page = await browser.newPage();
           // const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
         //w 1920, h 1200 
