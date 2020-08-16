@@ -121,6 +121,9 @@ bot.on('message',async message => {
     case 'live':
      bot.commands.get('live').execute(message,args);
       break;
+    case 'ignore':
+      bot.commands.get('ignore').execute(message,args);
+      break;
     case 'prefix':
       // Changes the prefix
       prefixes[message.guild.id] = {
@@ -248,7 +251,13 @@ bot.on('message',async message => {
       bot.commands.get('opening').execute(message,args);
       break;
     default:
-      message.channel.send("...-help for the list of commands my fellow smurf.");
+      const snapshot1 = await db.collection('prefix').where('name', '==', message.guild.id).get()
+      if(snapshot1.empty){
+        message.channel.send("...-help for the list of commands my fellow smurf.");
+      }
+      else{
+        return;
+      }
     break;
 
 }
