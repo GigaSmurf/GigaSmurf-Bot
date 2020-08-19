@@ -68,6 +68,7 @@ module.exports = {
           catch(e){
             console.log('This error: ', e)
             message.channel.send("This player is currently not in a game.");
+            await browser.close();
           }
 
         //   Deletes Image after try catch in case error after saving the image
