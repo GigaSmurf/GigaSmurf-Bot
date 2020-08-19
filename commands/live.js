@@ -10,13 +10,14 @@ module.exports = {
       let name1 = args.slice(1).join("+");
       let display = args.slice(1).join(" ");
         let person = message.author.id;
-      try{
         const browser = await puppetteer.launch({
           args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
           ],
         });
+        try{
+        
           const page = await browser.newPage();
           await page.setDefaultNavigationTimeout(0);
           // const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
