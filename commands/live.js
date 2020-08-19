@@ -61,13 +61,13 @@ module.exports = {
         //  await message.channel.send(`Here is the summoner ${display}`, {files: ["../images/esports.png"]});
         // console.log("Embed works");
         // Closes the browser
-          await browser.close();
-
           }
         //   Catch Error
           catch(e){
             console.log('This error: ', e)
             message.channel.send("This player is currently not in a game.");
+          }
+          finally{
             await browser.close();
           }
 
