@@ -9,6 +9,7 @@ module.exports = {
     async execute(message, args){
       let name1 = args.slice(1).join("+");
       let display = args.slice(1).join(" ");
+      message.channel.startTyping();
         let person = message.author.id;
         const browser = await puppetteer.launch({
           args: [
@@ -70,6 +71,7 @@ module.exports = {
             message.channel.send("This player is currently not in a game.");
             await browser.close();
           }
+          message.channel.stopTyping();
 
         //   Deletes Image after try catch in case error after saving the image
         //     const path = `../images/${person}.png`;
