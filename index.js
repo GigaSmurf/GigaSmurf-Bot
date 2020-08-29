@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-
+//Dylan Syahputra
 //initialize firebase firestore
 var admin = require("firebase-admin");
 
