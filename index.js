@@ -118,6 +118,9 @@ bot.on('message',async message => {
   let args = message.content.substring(prefix.length).split(" ");
 
   switch (args[0].toLowerCase()){
+    case 'coinflip':
+      bot.commands.get('coinflip').execute(message,args);
+      break;
     case 'live':
      bot.commands.get('live').execute(message,args);
       break;
