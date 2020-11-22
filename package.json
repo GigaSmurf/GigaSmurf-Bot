@@ -4,6 +4,7 @@
   "description": "GigaSmurf Bot",
   "main": "index.js",
   "dependencies": {
+    "@discordjs/opus": "^0.3.3",
     "chromium": "^3.0.1",
     "discord.js": "^12.2.0",
     "firebase-admin": "^9.0.0",
