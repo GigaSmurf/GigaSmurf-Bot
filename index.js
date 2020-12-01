@@ -129,16 +129,16 @@ bot.on('message',async message => {
         VC.join()
       .then(connection => {
           const dispatcher = connection.play(fs.createReadStream('./DOINB RYZE HACK英雄联盟 400 CS 24 MIN [L9 Turbo Boost].webm'), { type: 'webm/opus' });
-          message.channel.send('https://www.youtube.com/watch?v=YFS0L9HLrtI&ab_channel=ClaudeMarceau');
-          message.channel.send('https://www.youtube.com/watch?v=mKBZDjT4l6Q&ab_channel=EpicHappyBirthdays');
-          message.channel.send('https://www.youtube.com/watch?v=u655RC7Truo&ab_channel=EpicHappyBirthdays');
-          message.channel.send('https://www.youtube.com/watch?v=rasXbzmdWqk&ab_channel=EpicHappyBirthdays');
-          message.channel.send('https://www.youtube.com/watch?v=P6DOBevpI6Q&ab_channel=EpicHappyBirthdays');
-          message.channel.send('https://www.youtube.com/watch?v=kQt3eGoDVPU&ab_channel=EpicHappyBirthdays');
+          // message.channel.send('https://www.youtube.com/watch?v=YFS0L9HLrtI&ab_channel=ClaudeMarceau');
+          // message.channel.send('https://www.youtube.com/watch?v=mKBZDjT4l6Q&ab_channel=EpicHappyBirthdays');
+          // message.channel.send('https://www.youtube.com/watch?v=u655RC7Truo&ab_channel=EpicHappyBirthdays');
+          // message.channel.send('https://www.youtube.com/watch?v=rasXbzmdWqk&ab_channel=EpicHappyBirthdays');
+          // message.channel.send('https://www.youtube.com/watch?v=P6DOBevpI6Q&ab_channel=EpicHappyBirthdays');
+          // message.channel.send('https://www.youtube.com/watch?v=kQt3eGoDVPU&ab_channel=EpicHappyBirthdays');
           dispatcher.on("finish", end => {
             //VC.leave()
-            message.channel.send('https://cdn.discordapp.com/attachments/733464479173574706/779863376335208538/yzaryze.png');
-            message.channel.send('GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]');
+            // message.channel.send('https://cdn.discordapp.com/attachments/733464479173574706/779863376335208538/yzaryze.png');
+            // message.channel.send('GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]GEORGE BIRTHDAY HACK?现实生活 200 IQ 200 YEARS [L9 Rune Boost]');
            VC.leave();
             
           });
