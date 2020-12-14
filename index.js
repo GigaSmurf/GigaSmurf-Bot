@@ -122,30 +122,21 @@ bot.on('message',async message => {
       let rngnum = Math.floor(Math.random() * 101 );
       message.channel.send(rngnum);
       break;
-    case 'mav': {
+    case 'nick':{
       var VC = message.member.voice.channel;
       if (!VC)
           return message.reply("bruh wut")
         VC.join()
       .then(connection => {
-          const dispatcher = connection.play(fs.createReadStream('./MavBirthday (2).webm'), { type: 'webm/opus' });
-          message.channel.send('お誕生日おめでとうマシュー');
-          message.channel.send('马修生日快乐');
-          message.channel.send('শুভ জন্মদিন ম্যাথিউ');
-          message.channel.send('יום הולדת שמח מתיו');
-          message.channel.send('생일 축하 해요');
-          message.channel.send('ജന്മദിനാശംസകൾ മത്തായി');
-          message.channel.send('वाढदिवसाच्या शुभेच्छा मॅथ्यू');
-          message.channel.send('Chúc mừng sinh nhật Matthew');
-          message.channel.send('Všetko najlepšie k narodeninám Matthew');
-          message.channel.send('Зодрӯз муборак Матто');
-          message.channel.send('Честит рожден ден Матю');
-          message.channel.send('పుట్టినరోజు శుభాకాంక్షలు మాథ్యూ');
-          message.channel.send('С Днем Рождения, Мэтью');
+          const dispatcher = connection.play(fs.createReadStream('./nickbirthday.webm'), { type: 'webm/opus' });
+          message.channel.send('https://cdn.discordapp.com/attachments/733464479173574706/788049188302618644/unknown.png');
+          message.channel.send('https://cdn.discordapp.com/attachments/733464479173574706/788049314785263627/unknown.png');
+          message.channel.send('https://cdn.discordapp.com/attachments/733464479173574706/788049441805565952/unknown.png');
+          message.channel.send('https://cdn.discordapp.com/attachments/733464479173574706/788094130383224923/unknown.png');
           dispatcher.on("finish", end => {
             //VC.leave()
-           message.channel.send('https://cdn.discordapp.com/attachments/733464479173574706/784597899899568188/kanyemav.png');
-            message.channel.send('╰⊱:star:⊱╮꧁ ᕼᗅᚹᚹΥ 𐌇𐌠ᒥꓔᕼ߄ᗅΥ 𝔐𝔞𝔱𝔱𝔥𝔢𝔴 ꧂╭⊱:star:≺');
+           message.channel.send('https://cdn.discordapp.com/attachments/733464479173574706/788075584403537930/nickornn.png');
+           message.channel.send('𝐻𝒶𝓅𝓅𝓎 𝐵𝒾𝓇𝓉𝒽𝒹𝒶𝓎 𝒩𝒾𝒸𝓀');
            VC.leave();
             
           });
@@ -153,6 +144,40 @@ bot.on('message',async message => {
       .catch(console.error);
       };
     break; 
+    case 'mav': {
+    //   var VC = message.member.voice.channel;
+    //   if (!VC)
+    //       return message.reply("bruh wut")
+    //     VC.join()
+    //   .then(connection => {
+    //       const dispatcher = connection.play(fs.createReadStream('./MavBirthday (2).webm'), { type: 'webm/opus' });
+    //       message.channel.send('お誕生日おめでとうマシュー');
+    //       message.channel.send('马修生日快乐');
+    //       message.channel.send('শুভ জন্মদিন ম্যাথিউ');
+    //       message.channel.send('יום הולדת שמח מתיו');
+    //       message.channel.send('생일 축하 해요');
+    //       message.channel.send('ജന്മദിനാശംസകൾ മത്തായി');
+    //       message.channel.send('वाढदिवसाच्या शुभेच्छा मॅथ्यू');
+    //       message.channel.send('Chúc mừng sinh nhật Matthew');
+    //       message.channel.send('Všetko najlepšie k narodeninám Matthew');
+    //       message.channel.send('Зодрӯз муборак Матто');
+    //       message.channel.send('Честит рожден ден Матю');
+    //       message.channel.send('పుట్టినరోజు శుభాకాంక్షలు మాథ్యూ');
+    //       message.channel.send('С Днем Рождения, Мэтью');
+    //       dispatcher.on("finish", end => {
+    //         //VC.leave()
+    //        message.channel.send('https://cdn.discordapp.com/attachments/733464479173574706/784597899899568188/kanyemav.png');
+    //         message.channel.send('╰⊱:star:⊱╮꧁ ᕼᗅᚹᚹΥ 𐌇𐌠ᒥꓔᕼ߄ᗅΥ 𝔐𝔞𝔱𝔱𝔥𝔢𝔴 ꧂╭⊱:star:≺');
+    //        VC.leave();
+            
+    //       });
+    //   })
+    //   .catch(console.error);
+    //   };
+    // break; 
+    message.channel.send('what!? I never heard of this command before...');  
+  };
+    break;
     case 'yza': {
       // var VC = message.member.voice.channel;
       // if (!VC)
