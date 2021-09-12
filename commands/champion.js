@@ -152,6 +152,14 @@ module.exports = {
                                         
 
 
+                                            
+
+
+                                        }
+                                        
+                                        async function waitforTHIS(){
+
+                                            await getData1();
                                             const exampleEmbed = new MessageEmbed()
                                                 .setColor('GOLD')
                                                 .setTitle(`${realname}`)
@@ -194,13 +202,6 @@ module.exports = {
                                                 .setTimestamp()
                                                 .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
                                              message.channel.send({embeds: [exampleEmbed]});
-
-
-                                        }
-                                        
-                                        async function waitforTHIS(){
-
-                                            await getData1();
                                         }
                                         try {
                                             waitforTHIS();}
@@ -233,7 +234,8 @@ module.exports = {
             }
             
             try {
-                waitforTHIS1();}
+                waitforTHIS1();
+            }
                 catch(error){
                     console.error(error.message);
                 }
