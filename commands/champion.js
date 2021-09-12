@@ -179,7 +179,11 @@ module.exports = {
 
                                             message.channel.send({ embeds: [exampleEmbed] });
                                         }
-                                        getData1()
+                                        try {
+                                            getData1();}
+                                            catch(error){
+                                                console.error(error.message);
+                                            }
                                     }
                                         catch (error){
                                             console.error(error.message);
@@ -199,7 +203,11 @@ module.exports = {
 
 
             }
-            getData();
+            try {
+                getData();}
+                catch(error){
+                    console.error(error.message);
+                }
         }
         catch (error){
             console.error(error.message);

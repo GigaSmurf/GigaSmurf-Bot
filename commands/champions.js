@@ -76,7 +76,11 @@ module.exports = {
                         message.channel.send({ embeds: [exampleEmbed] });
                         
                     }
-                    getData();
+                    try {
+                        getData();}
+                        catch(error){
+                            console.error(error.message);
+                        }
                 }
                 catch (error){
                     console.error(error.message);
