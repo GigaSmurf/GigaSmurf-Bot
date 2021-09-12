@@ -66,11 +66,9 @@ module.exports = {
                         
                         
                     }
-                    try {
-                        await getData();}
-                        catch(error){
-                            console.error(error.message);
-                        }
+                
+                        await getData();
+                        
                     const exampleEmbed = new Discord.MessageEmbed()
                             .setColor('DARK_BLUE')
                             .setTitle('Champions List')
