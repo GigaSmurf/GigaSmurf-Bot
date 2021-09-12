@@ -79,9 +79,16 @@ module.exports = {
                             .setThumbnail('https://logodownload.org/wp-content/uploads/2014/09/lol-league-of-Legends-logo-1.png')
                             .setTimestamp()
                             .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
-                            message.channel.send({ embeds: [exampleEmbed] });
+                            message.channel.send(exampleEmbed);
+                            console.log(list,exampleEmbed)
                     }
-                    printthis();
+                    try{
+                        printthis();
+                    }
+                    catch{
+                        console.error('error here');
+                    }
+                    
                     
                 }
                 catch (error){
