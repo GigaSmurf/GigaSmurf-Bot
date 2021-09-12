@@ -80,7 +80,7 @@ module.exports = {
                             .setTimestamp()
                             .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
                             message.channel.send(exampleEmbed);
-                            console.log(list,exampleEmbed)
+                            
                     }
                     try{
                         printthis();

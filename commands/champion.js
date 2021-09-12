@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const https = require('https');
-const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'champion',
@@ -18,9 +17,7 @@ module.exports = {
 
              res.on("end",()=>{
                 try{
-                    async function getData(){
-
-                                let realname = "";
+                    let realname = "";
                                 let id = -1;
                                 let alias = "";
                                 let bio = "";
@@ -57,7 +54,25 @@ module.exports = {
                                 let rdesc = "";
                                 let rdynamicdesc = "" ;
 
+                                let  qrange = []
+                                let  qcosts = []
+                                let  qcooldown = []
 
+                                let  wrange = []
+                                let  wcosts = []
+                                let  wcooldown = []
+
+                                let  erange = []
+                                let  ecosts = []
+                                let  ecooldown = []
+
+                                let  rrange = []
+                                let  rcosts = []
+                                let  rcooldown = []
+
+                    async function getData(){
+
+                                
                         //turns json data into json object
                         let json = await JSON.parse(body);
                         for(var key of Object.keys(json)){
@@ -109,33 +124,60 @@ module.exports = {
                                             qname = json1.spells[0].name;
                                             qdesc = json1.spells[0].description;
                                             qdynamicdesc = json1.spells[0].dynamicDescription;
-                                          let  qrange = json1.spells[0].range;
-                                          let  qcosts = json1.spells[0].costCoefficients;
-                                          let  qcooldown = json1.spells[0].cooldownCoefficients;
+                                            qrange = json1.spells[0].range;
+                                            qcosts = json1.spells[0].costCoefficients;
+                                            qcooldown = json1.spells[0].cooldownCoefficients;
 
                                             wname = json1.spells[1].name;
                                             wdesc = json1.spells[1].description;
                                             wdynamicdesc = json1.spells[1].dynamicDescription;
-                                          let  wrange = json1.spells[1].range;
-                                           let wcosts = json1.spells[1].costCoefficients;
-                                           let wcooldown = json1.spells[1].cooldownCoefficients;
+                                            wrange = json1.spells[1].range;
+                                            wcosts = json1.spells[1].costCoefficients;
+                                            wcooldown = json1.spells[1].cooldownCoefficients;
 
                                             ename = json1.spells[2].name;
                                             edesc = json1.spells[2].description;
                                             edynamicdesc = json1.spells[2].dynamicDescription;
-                                         let   erange = json1.spells[2].range;
-                                          let  ecosts = json1.spells[2].costCoefficients;
-                                           let  ecooldown = json1.spells[2].cooldownCoefficients;
+                                            erange = json1.spells[2].range;
+                                            ecosts = json1.spells[2].costCoefficients;
+                                             ecooldown = json1.spells[2].cooldownCoefficients;
 
                                             rname = json1.spells[3].name;
                                             rdesc = json1.spells[3].description;
                                             rdynamicdesc = json1.spells[3].dynamicDescription;
-                                           let  rrange = json1.spells[3].range;
-                                           let  rcosts = json1.spells[3].costCoefficients;
-                                           let  rcooldown = json1.spells[3].cooldownCoefficients;
+                                             rrange = json1.spells[3].range;
+                                             rcosts = json1.spells[3].costCoefficients;
+                                             rcooldown = json1.spells[3].cooldownCoefficients;
 
 
-                                            const exampleEmbed = new MessageEmbed()
+                                        }
+                                        try {
+                                            getData1();}
+                                            catch(error){
+                                                console.error(error.message);
+                                            }
+                                    }
+                                        catch (error){
+                                            console.error(error.message);
+                                        }
+
+                                    });
+                                })
+
+
+                            // }
+                            }
+
+                        }
+
+
+
+
+
+            }
+            async function printthis(){
+                await getData();
+                const exampleEmbed = new Discord.MessageEmbed()
                                                 .setColor('GOLD')
                                                 .setTitle(`${realname}`)
                                                 .setURL(`https://leagueoflegends.fandom.com/wiki/${realname}/LoL`)
@@ -177,38 +219,15 @@ module.exports = {
                                                 .setTimestamp()
                                                 .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
 
-                                            await message.channel.send({ embeds: [exampleEmbed] });
-                                        }
-                                        try {
-                                            getData1();}
-                                            catch(error){
-                                                console.error(error.message);
-                                            }
-                                    }
-                                        catch (error){
-                                            console.error(error.message);
-                                        }
-
-                                    });
-                                })
-
-
-                            // }
-                            }
-
-                        }
-
-
-
-
-
+                                             message.channel.send(exampleEmbed);
             }
             try {
-                getData();}
+                printthis()
+                }
                 catch(error){
                     console.error(error.message);
                 }
-        }
+        }//try ends
         catch (error){
             console.error(error.message);
         }
