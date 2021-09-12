@@ -6,6 +6,7 @@ module.exports = {
     name: 'champions',
     description: 'This shows the list of champions in league of legends',
        async execute(message,args){
+           let emby;
         if (!args[1]== '1' || !args[1]== '2' ||!args[1]== '3'){
             message.channel.send("Please specify a page number.")
             return;
@@ -72,8 +73,8 @@ module.exports = {
                             .setThumbnail('https://logodownload.org/wp-content/uploads/2014/09/lol-league-of-Legends-logo-1.png')
                             .setTimestamp()
                             .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
-                       
-                       await message.channel.send({ embeds: [exampleEmbed] });
+                            empby = exampleEmbed;
+                        // message.channel.send({ embeds: [exampleEmbed] });
                         
                     }
                     try {
@@ -92,5 +93,7 @@ module.exports = {
             console.error(error.message);
         });
         // console.log(jsonobj,"wtf");  doesnt work here because async await 
+        message.channel.send({ embeds: [emby] });
+        message.channel.send('does this work or...')
     }
 }
