@@ -160,6 +160,7 @@ module.exports = {
                                         async function waitforTHIS(){
 
                                             await getData1();
+                                            console.log(rcooldown)
                                             const exampleEmbed = new MessageEmbed()
                                                 .setColor('GOLD')
                                                 .setTitle(`${realname}`)
