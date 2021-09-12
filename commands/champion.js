@@ -160,7 +160,6 @@ module.exports = {
                                         async function waitforTHIS(){
 
                                             await getData1();
-                                            console.log(rcooldown)
                                             const exampleEmbed = new Discord.MessageEmbed()
                                                 .setColor('GOLD')
                                                 .setTitle(`${realname}`)
