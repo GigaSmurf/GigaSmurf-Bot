@@ -161,7 +161,7 @@ module.exports = {
 
                                             await getData1();
                                             console.log(rcooldown)
-                                            const exampleEmbed = new MessageEmbed()
+                                            const exampleEmbed = new Discord.MessageEmbed()
                                                 .setColor('GOLD')
                                                 .setTitle(`${realname}`)
                                                 .setURL(`https://leagueoflegends.fandom.com/wiki/${realname}/LoL`)
@@ -195,14 +195,14 @@ module.exports = {
                                                     { name: 'Values', value: `**Range:** ${rrange} \n **Costs:** ${rcosts} \n **Cooldown:** ${rcooldown}`, inline: true },
 
                                                      { name: '\u200B', value: '\u200B' },
-                                                    { name: 'Skins ', value: skins },
+                                                    { name: 'Skins ', value: `${skins}` },
                                                     
                                                 )
                                                 // .addField('Inline field title', 'Some value here', true)
                                                 .setThumbnail(photo)
                                                 .setTimestamp()
                                                 .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
-                                             message.channel.send({embeds: [exampleEmbed]});
+                                             message.channel.send(exampleEmbed);
                                         }
                                         try {
                                             waitforTHIS();}
