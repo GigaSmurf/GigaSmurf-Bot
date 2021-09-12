@@ -67,9 +67,10 @@ module.exports = {
                         
                     }
                 
-                     getData();
-                        
-                    const exampleEmbed = new Discord.MessageEmbed()
+                    async function printthis(){
+                        await getData();
+                         
+                        const exampleEmbed = new Discord.MessageEmbed()
                             .setColor('DARK_BLUE')
                             .setTitle('Champions List')
                             .setURL('https://www.leagueoflegends.com/en-us/champions/')
@@ -78,10 +79,9 @@ module.exports = {
                             .setThumbnail('https://logodownload.org/wp-content/uploads/2014/09/lol-league-of-Legends-logo-1.png')
                             .setTimestamp()
                             .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
-                            empby = exampleEmbed;
-                            console.log(exampleEmbed);
-                        // message.channel.send({ embeds: [exampleEmbed] });
-                        message.channel.send('does this work or...')
+                            message.channel.send({ embeds: [exampleEmbed] });
+                    }
+                    printthis();
                     
                 }
                 catch (error){
