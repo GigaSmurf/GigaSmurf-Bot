@@ -203,6 +203,9 @@ bot.on('message',async message => {
       message.channel.send('what!? I never heard of this command before...');  
     };
     break;
+    case 'info':
+      bot.commands.get('info').execute(message,args);
+      break;
     case 'coinflip':
       bot.commands.get('coinflip').execute(message,args);
       break;
@@ -235,6 +238,12 @@ bot.on('message',async message => {
       break;
     case 'add':
       bot.commands.get('add').execute(message,args);
+      break;
+    case 'champion':
+      bot.commands.get('champion').execute(message,args);
+      break;
+    case 'champions':
+      bot.commands.get('champions').execute(message,args);
       break;
     case 'delete':
       bot.commands.get('delete').execute(message,args);
