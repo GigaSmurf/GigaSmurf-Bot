@@ -227,7 +227,17 @@ module.exports = {
 
 
             }
-          getData();
+            async function waitforTHIS1(){
+
+                await getData();
+            }
+            
+            try {
+                waitforTHIS1();}
+                catch(error){
+                    console.error(error.message);
+                }
+
         }//try ends
         catch (error){
             console.error(error.message);
