@@ -67,7 +67,7 @@ module.exports = {
                         
                     }
                 
-                        await getData();
+                     getData();
                         
                     const exampleEmbed = new Discord.MessageEmbed()
                             .setColor('DARK_BLUE')
