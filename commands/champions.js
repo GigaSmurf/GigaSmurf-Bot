@@ -6,7 +6,7 @@ module.exports = {
     description: 'This shows the list of champions in league of legends',
        async execute(message,args){
            let emby;
-        if (!args[1]== '1' || !args[1]== '2' ||!args[1]== '3'){
+           if (args[1]!= "1" || args[1]!= "2" ||args[1]!= "3"){
             message.channel.send("Please specify a page number.")
             return;
         }
