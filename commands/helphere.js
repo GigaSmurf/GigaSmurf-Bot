@@ -17,7 +17,7 @@ module.exports ={
             {name: 'Movie',value:"``-add {movie}`` - Adds a movie to the unviewed list\n``-delete {movie}`` - Deletes a movie from the unviewed list\n``-unviewed`` - Displays the unviewed list\n``-viewed`` - Displays the viewed list\n``-watch {movie}`` - Moves the movie watched from the unviewed list to the viewed list\n``-viewdelete {movie}`` - Deletes a movie from the viewed list\n``-moviepoll <{time}m or {time}s>`` - Creates a poll from the unviewed list (top 10) for a certain amount of time"},
             {name: 'Info', value: "``-help`` - Sends you a list of commands\n``-helphere`` - Sends the channel a list of commands\n``-link`` - Invite me to your server!\n ``-website`` - Sends a link to the GigaSmurf website"}
         )
-        .setFooter("Version: Beta 1.0");
+        .setFooter("Version: Beta 1.69");
 
         message.channel.send(Embed);
     }
