@@ -1,10 +1,11 @@
 const Discord = require('discord.js');
 const https = require('https');
+const { MessageEmbed } = require('discord.js')
 
 module.exports = {
     name: 'champion',
     description: 'This shows the detailed information of one champion',
-       async execute(message,args){
+        execute(message,args){
         const url = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json";
         let url1 = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champions/"
         const championname = args[1];
@@ -18,57 +19,57 @@ module.exports = {
              res.on("end",()=>{
                 try{
                     let realname = "";
-                                let id = -1;
-                                let alias = "";
-                                let bio = "";
-                                //tactical info
-                                let difficulty = "";
-                                // playstyle info
-                                let damage = ""
-                                let durability = ""
-                                let crowdcontrol = ""
-                                let mobility = ""
-                                let utility = ""
-                                let photo = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/`
-                                //role
-                                let roles = "";
-                                //skins
-                                let skins = "";
-                                //passive
-                                let passivename = "";
-                                let passivedesc = "";
-                                // q
-                                let qname = "";
-                                let qdesc = "";
-                                let qdynamicdesc = "";
-                                // w
-                                let wname = "";
-                                let wdesc = "";
-                                let wdynamicdesc = "";
-                                // e
-                                let ename = "";
-                                let edesc = "";
-                                let edynamicdesc = "";
-                                // r
-                                let rname = "";
-                                let rdesc = "";
-                                let rdynamicdesc = "" ;
+                    let id = -1;
+                    let alias = "";
+                    let bio = "";
+                    //tactical info
+                    let difficulty = "";
+                    // playstyle info
+                    let damage = ""
+                    let durability = ""
+                    let crowdcontrol = ""
+                    let mobility = ""
+                    let utility = ""
+                    let photo = `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/`
+                    //role
+                    let roles = "";
+                    //skins
+                    let skins = "";
+                    //passive
+                    let passivename = "";
+                    let passivedesc = "";
+                    // q
+                    let qname = "";
+                    let qdesc = "";
+                    let qdynamicdesc = "";
+                    // w
+                    let wname = "";
+                    let wdesc = "";
+                    let wdynamicdesc = "";
+                    // e
+                    let ename = "";
+                    let edesc = "";
+                    let edynamicdesc = "";
+                    // r
+                    let rname = "";
+                    let rdesc = "";
+                    let rdynamicdesc = "" ;
 
-                                let  qrange = []
-                                let  qcosts = []
-                                let  qcooldown = []
+                    let  qrange = []
+                    let  qcosts = []
+                    let  qcooldown = []
 
-                                let  wrange = []
-                                let  wcosts = []
-                                let  wcooldown = []
+                    let  wrange = []
+                    let  wcosts = []
+                    let  wcooldown = []
 
-                                let  erange = []
-                                let  ecosts = []
-                                let  ecooldown = []
+                    let  erange = []
+                    let  ecosts = []
+                    let  ecooldown = []
 
-                                let  rrange = []
-                                let  rcosts = []
-                                let  rcooldown = []
+                    let  rrange = []
+                    let  rcosts = []
+                    let  rcooldown = []
 
                     async function getData(){
 
@@ -148,14 +149,65 @@ module.exports = {
                                              rrange = json1.spells[3].range;
                                              rcosts = json1.spells[3].costCoefficients;
                                              rcooldown = json1.spells[3].cooldownCoefficients;
+                                        
+
+
+                                            const exampleEmbed = new MessageEmbed()
+                                                .setColor('GOLD')
+                                                .setTitle(`${realname}`)
+                                                .setURL(`https://leagueoflegends.fandom.com/wiki/${realname}/LoL`)
+                                                // .setAuthor(`Page ${args[1]}`, 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png')
+                                                .setDescription(`**${alias}** \n\n ${bio} \n\n **Role(s):** ${roles}`)
+                                                .addFields(
+                                                    { name: 'Difficulty', value: `${difficulty}`, inline: true },
+                                                    { name: 'Damage', value: `${damage}`, inline: true },
+                                                    { name: 'Durability', value: `${durability}`, inline: true },
+
+                                                    { name: 'Crowd Control', value: `${crowdcontrol}`, inline: true },
+                                                    { name: 'Mobility', value: `${mobility}`, inline: true },
+                                                    { name: 'Utility', value: `${utility}`, inline: true },
+
+                                                    { name: 'Passive', value: `${passivename} - ${passivedesc}`, inline: false },
+
+                                                    { name: 'q', value: `${qname}`, inline: true },
+                                                    { name: 'Description', value: `${qdesc}`, inline: true },
+                                                    { name: 'Values', value: `**Range:** ${qrange} \n **Costs:** ${qcosts} \n **Cooldown:** ${qcooldown}`, inline: true },
+
+                                                    { name: 'w', value: `${wname}`, inline: true },
+                                                    { name: 'Description', value: `${wdesc}`, inline: true },
+                                                    { name: 'Values', value: `**Range:** ${wrange} \n **Costs:** ${wcosts} \n **Cooldown:** ${wcooldown}`, inline: true },
+
+                                                    { name: 'e', value: `${ename}`, inline: true },
+                                                    { name: 'Description', value: `${edesc}`, inline: true },
+                                                    { name: 'Values', value: `**Range:** ${erange} \n **Costs:** ${ecosts} \n **Cooldown:** ${ecooldown}`, inline: true },
+
+                                                    { name: 'r', value: `${rname}`, inline: true },
+                                                    { name: 'Description', value: `${rdesc}`, inline: true },
+                                                    { name: 'Values', value: `**Range:** ${rrange} \n **Costs:** ${rcosts} \n **Cooldown:** ${rcooldown}`, inline: true },
+
+                                                     { name: '\u200B', value: '\u200B' },
+                                                    { name: 'Skins ', value: skins },
+                                                    
+                                                )
+                                                // .addField('Inline field title', 'Some value here', true)
+                                                .setThumbnail(photo)
+                                                .setTimestamp()
+                                                .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
+                                             message.channel.send({embeds: [exampleEmbed]});
 
 
                                         }
+                                        
+                                        async function waitforTHIS(){
+
+                                            await getData1();
+                                        }
                                         try {
-                                            getData1();}
+                                            waitforTHIS();}
                                             catch(error){
                                                 console.error(error.message);
                                             }
+
                                     }
                                         catch (error){
                                             console.error(error.message);
@@ -175,58 +227,7 @@ module.exports = {
 
 
             }
-            async function printthis(){
-                await getData();
-                const exampleEmbed = new Discord.MessageEmbed()
-                                                .setColor('GOLD')
-                                                .setTitle(`${realname}`)
-                                                .setURL(`https://leagueoflegends.fandom.com/wiki/${realname}/LoL`)
-                                                // .setAuthor(`Page ${args[1]}`, 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png')
-                                                .setDescription(`**${alias}** \n\n ${bio} \n\n **Role(s):** ${roles}`)
-                                                .addFields(
-                                                    { name: 'Difficulty', value: `${difficulty}`, inline: true },
-                                                    { name: 'Damage', value: `${damage}`, inline: true },
-                                                    { name: 'Durability', value: `${durability}`, inline: true },
-
-                                                    { name: 'Crowd Control', value: `${crowdcontrol}`, inline: true },
-                                                    { name: 'Mobility', value: `${mobility}`, inline: true },
-                                                    { name: 'Utility', value: `${utility}`, inline: true },
-
-                                                    { name: 'Passive', value: `${passivename} - ${passivedesc}`, inline: false },
-
-                                                    { name: 'q', value: qname, inline: true },
-                                                    { name: 'Description', value: qdesc, inline: true },
-                                                    { name: 'Values', value: `**Range:** ${qrange} \n **Costs:** ${qcosts} \n **Cooldown:** ${qcooldown}`, inline: true },
-
-                                                    { name: 'w', value: wname, inline: true },
-                                                    { name: 'Description', value: wdesc, inline: true },
-                                                    { name: 'Values', value: `**Range:** ${wrange} \n **Costs:** ${wcosts} \n **Cooldown:** ${wcooldown}`, inline: true },
-
-                                                    { name: 'e', value: ename, inline: true },
-                                                    { name: 'Description', value: edesc, inline: true },
-                                                    { name: 'Values', value: `**Range:** ${erange} \n **Costs:** ${ecosts} \n **Cooldown:** ${ecooldown}`, inline: true },
-
-                                                    { name: 'r', value: rname, inline: true },
-                                                    { name: 'Description', value: rdesc, inline: true },
-                                                    { name: 'Values', value: `**Range:** ${rrange} \n **Costs:** ${rcosts} \n **Cooldown:** ${rcooldown}`, inline: true },
-
-                                                    { name: '\u200B', value: '\u200B' },
-                                                    { name: 'Skins ', value: skins },
-                                                    
-                                                )
-                                                // .addField('Inline field title', 'Some value here', true)
-                                                .setThumbnail(photo)
-                                                .setTimestamp()
-                                                .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
-
-                                             message.channel.send(exampleEmbed);
-            }
-            try {
-                printthis()
-                }
-                catch(error){
-                    console.error(error.message);
-                }
+          getData();
         }//try ends
         catch (error){
             console.error(error.message);
