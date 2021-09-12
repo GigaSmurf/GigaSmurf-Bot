@@ -63,7 +63,10 @@ module.exports = {
                             }
                             
                         }
-                        const exampleEmbed = new Discord.MessageEmbed()
+                        
+                        
+                    }
+                    const exampleEmbed = new Discord.MessageEmbed()
                             .setColor('DARK_BLUE')
                             .setTitle('Champions List')
                             .setURL('https://www.leagueoflegends.com/en-us/champions/')
@@ -76,8 +79,6 @@ module.exports = {
                             console.log(exampleEmbed);
                         // message.channel.send({ embeds: [exampleEmbed] });
                         message.channel.send('does this work or...')
-                        
-                    }
                     try {
                         getData();}
                         catch(error){
