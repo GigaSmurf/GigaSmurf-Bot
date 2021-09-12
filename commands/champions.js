@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const https = require('https');
-const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'champions',
@@ -64,7 +63,7 @@ module.exports = {
                             }
                             
                         }
-                        const exampleEmbed = new MessageEmbed()
+                        const exampleEmbed = new Discord.MessageEmbed()
                             .setColor('DARK_BLUE')
                             .setTitle('Champions List')
                             .setURL('https://www.leagueoflegends.com/en-us/champions/')
@@ -74,7 +73,7 @@ module.exports = {
                             .setTimestamp()
                             .setFooter('Patch: latest', 'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,w_120,h_120/https://dashboard.snapcraft.io/site_media/appmedia/2018/09/icon_schOjzl.png');
                             empby = exampleEmbed;
-                            console.log(emby);
+                            console.log(exampleEmbed);
                         // message.channel.send({ embeds: [exampleEmbed] });
                         message.channel.send('does this work or...')
                         
