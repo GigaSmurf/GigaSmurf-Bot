@@ -5,7 +5,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'champions',
     description: 'This shows the list of champions in league of legends',
-       execute(message,args){
+       async execute(message,args){
         if (!args[1]== '1' || !args[1]== '2' ||!args[1]== '3'){
             message.channel.send("Please specify a page number.")
             return;
