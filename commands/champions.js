@@ -93,7 +93,6 @@ module.exports = {
             console.error(error.message);
         });
         // console.log(jsonobj,"wtf");  doesnt work here because async await 
-        message.channel.send({ embeds: [emby] });
         message.channel.send('does this work or...')
     }
 }
