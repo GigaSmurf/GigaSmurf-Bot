@@ -6,10 +6,7 @@ module.exports = {
     description: 'This shows the list of champions in league of legends',
        async execute(message,args){
            let emby;
-           if (args[1]!= "1" || args[1]!= "2" ||args[1]!= "3"){
-            message.channel.send("Please specify a page number.")
-            return;
-        }
+           if (args[1] == '1' || args[1] == '2' ||args[1] == '3'){        
         const url = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json";
         let body = "";
         https.get(url,(res) =>{
@@ -102,5 +99,9 @@ module.exports = {
         });
         // console.log(jsonobj,"wtf");  doesnt work here because async await 
        
+    }else{ 
+        message.channel.send("Please specify a page number.")
+            return;
     }
+}
 }
