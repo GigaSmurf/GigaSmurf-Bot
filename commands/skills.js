@@ -35,7 +35,7 @@ module.exports = {
           await page.goto(`https://u.gg/lol/champions/${name1}/build`);
         
           //ensure load 
-         await page.waitForSelector('.recommended-build_skills');
+         await page.waitForSelector('.recommended-build_items');
         
           
      
