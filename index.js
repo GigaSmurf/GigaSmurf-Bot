@@ -349,6 +349,18 @@ bot.on('message',async message => {
     case 'opening':
       bot.commands.get('opening').execute(message,args);
       break;
+    // case 'rym':
+    //   bot.commands.get('rym').execute(message,args);
+    //   break;
+    case 'build':
+      bot.commands.get('build').execute(message,args)
+      break;
+    case 'skills':
+      bot.commands.get('skills').execute(message,args)
+      break;
+    case 'runes':
+      bot.commands.get('runes').execute(message,args)
+      break;
     default:
       const snapshot1 = await db.collection('prefix').where('name', '==', message.guild.id).get()
       if(snapshot1.empty){
