@@ -361,6 +361,9 @@ bot.on('message',async message => {
     case 'runes':
       bot.commands.get('runes').execute(message,args)
       break;
+    case 'motivation': 
+      bot.commands.get('motivation').execute(message,args)
+      break;
     default:
       const snapshot1 = await db.collection('prefix').where('name', '==', message.guild.id).get()
       if(snapshot1.empty){
