@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { Client, Intents } = require('discord.js');
-
+//deploy push lol
 const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 //Dylan Syahputra
