@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const { Client, Intents } = require('discord.js');
 //deploy push lol
 const bot = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
-
+const cron = require('cron');
 //Dylan Syahputra
 //initialize firebase firestore
 var admin = require("firebase-admin");
@@ -377,6 +377,12 @@ bot.on('message',async message => {
 }
 })
 
+let scheduleMessage = new cron.CronJob('00 50 03 29 * *', () =>{
+  client.channels.cache.get('1033852964298821706').send('<@376463195516436491>');
+  // channel.send('/finish');
+});
+
+scheduleMessage.start();
 
 
 
