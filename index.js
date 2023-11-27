@@ -10,7 +10,7 @@ const serviceAccount = {
   type: "service_account",
   project_id: "gigasmurf-bot",
   private_key_id: process.env.ID,
-  private_key: process.env.PRIVATE,
+  private_key: process.env.PRIVATE.replace(/\\n/g, '\n'),
   client_email: process.env.EMAIL,
   client_id: process.env.C_ID,
   auth_uri: "https://accounts.google.com/o/oauth2/auth",
