@@ -6,7 +6,7 @@ const cron = require('cron');
 //Dylan Syahputra
 //initialize firebase firestore
 var admin = require("firebase-admin");
-const config = {
+const serviceAccount = {
   type: "service_account",
   project_id: "gigasmurf-bot",
   private_key_id: process.env.ID,
@@ -18,7 +18,7 @@ const config = {
   auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
   client_x509_cert_url: "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-tltzi%40gigasmurf-bot.iam.gserviceaccount.com"
 };
-var serviceAccount = require(config);
+// var serviceAccount = require(config);
 const { FieldValue } = require('@google-cloud/firestore');
 
 admin.initializeApp({
