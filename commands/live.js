@@ -27,7 +27,7 @@ module.exports = {
       await page.setDefaultNavigationTimeout(0);
       // const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
       //w 1920, h 1200 
-      await page.setViewport({ width: 1920, height: 1500, deviceScaleFactor: 1 });
+      await page.setViewport({ width: 650, height: 614, deviceScaleFactor: 1 });
       await page.goto(`https://www.op.gg/summoners/na/${encodedName}-${tag}/ingame`);
 
 
