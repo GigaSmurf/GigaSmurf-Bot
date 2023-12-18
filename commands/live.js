@@ -28,7 +28,7 @@ module.exports = {
       // const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
       //w 1920, h 1200 
       await page.setViewport({ width: 650, height: 614, deviceScaleFactor: 1 });
-      await page.goto(`https://www.op.gg/summoners/na/${encodedName}-${tag}/ingame`);
+      await page.goto(`https://www.op.gg/summoners/na/${encodedName}-${tag}`);
 
 
       // await page.waitForSelector('.SpectateTabButton');
@@ -42,8 +42,8 @@ module.exports = {
 
       //   const shot = await page.$('.SpectateSummoner')
 
-      await page.waitForSelector('.css-1f3ucwo.e1dhexvk4', { timeout: 7000 });
-      const shot = await page.$('.css-1f3ucwo.e1dhexvk4');
+      await page.waitForSelector('.LiveGamePreview.mobile.css-12xhu0w.e67ftu0 .contents', { timeout: 7000 });
+      const shot = await page.$('.LiveGamePreview.mobile.css-12xhu0w.e67ftu0 .contents');
 
       const box = await shot.boundingBox();
 
