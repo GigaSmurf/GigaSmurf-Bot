@@ -31,7 +31,11 @@ module.exports = {
       await page.goto(`https://www.op.gg/summoners/na/${encodedName}-${tag}`);
 
 
-      // await page.waitForSelector('.SpectateTabButton');
+      await page.waitForSelector('.css-1mi6gw3.e1pqk8hv2');
+
+      const button = await page.$('.css-1mi6gw3.e1pqk8hv2');
+      button.click();
+      
 
       // const button = await page.$('.SpectateTabButton');
       // button.click();
@@ -42,8 +46,8 @@ module.exports = {
 
       //   const shot = await page.$('.SpectateSummoner')
 
-      await page.waitForSelector('.LiveGamePreview.css-12xhu0w.e67ftu0 .contents', { timeout: 7000 });
-      const shot = await page.$('.LiveGamePreview.css-12xhu0w.e67ftu0 .contents');
+      await page.waitForSelector('.css-1m2ho5a.e1dhexvk0', { timeout: 7000 });
+      const shot = await page.$('.css-1m2ho5a.e1dhexvk0');
 
       const box = await shot.boundingBox();
 
