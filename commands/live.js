@@ -42,8 +42,8 @@ module.exports = {
 
       //   const shot = await page.$('.SpectateSummoner')
 
-      await page.waitForSelector('.css-1m2ho5a.e1dhexvk0', { timeout: 7000 });
-      const shot = await page.$('.css-1m2ho5a.e1dhexvk0');
+      await page.waitForSelector('.css-1f3ucwo.e1dhexvk4', { timeout: 7000 });
+      const shot = await page.$('.css-1f3ucwo.e1dhexvk4');
 
       const box = await shot.boundingBox();
 
