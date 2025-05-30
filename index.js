@@ -123,6 +123,12 @@ bot.on('message', async message => {
   // Gets the prefix from either the file or takes the default one if server does not have a custom prefix
   let prefix = prefixes[message.guild.id].prefixes;
 
+  // DENTON TX LMAO
+  if (message.content.toLowerCase().includes("denton")) {
+    message.channel.send('https://cdn.discordapp.com/attachments/798030932774354954/1376370587768979456/unknown.png?ex=683a5a7f&is=683908ff&hm=1416a58bacaa2fdbd5b350a4026de44db2a5dd2d1b076f01258629ac455a857c&');
+    return;
+  }
+
   //this ignores a message that is not a calling the bot and messages from other bots
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 
