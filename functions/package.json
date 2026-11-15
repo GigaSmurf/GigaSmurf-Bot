@@ -18,5 +18,8 @@
   "devDependencies": {
     "firebase-functions-test": "^0.2.0"
   },
-  "private": true
+  "private": true,
+  "overrides": {
+    "node-forge": "^1.4.3"
+  }
 }

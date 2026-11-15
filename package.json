@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/GigaSmurf/GigaSmurf-Bot/issues"
   },
-  "homepage": "https://github.com/GigaSmurf/GigaSmurf-Bot#readme"
+  "homepage": "https://github.com/GigaSmurf/GigaSmurf-Bot#readme",
+  "overrides": {
+    "node-forge": "^1.4.3"
+  }
 }
