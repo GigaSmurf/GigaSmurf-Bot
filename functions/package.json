@@ -20,6 +20,10 @@
   },
   "private": true,
   "overrides": {
-    "node-forge": "^1.4.3"
+    "node-forge": "^1.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "date-and-time": "^0.14.2",
+    "@grpc/grpc-js": "^1.14.7",
+    "json-bigint": "^1.0.0"
   }
 }

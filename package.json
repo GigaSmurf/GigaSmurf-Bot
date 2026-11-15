@@ -4,7 +4,7 @@
   "description": "GigaSmurf Bot",
   "main": "index.js",
   "dependencies": {
-    "@discordjs/opus": "^0.3.3",
+    "@discordjs/opus": "^0.11.0",
     "chromium": "^3.0.1",
     "cron": "^2.3.0",
     "discord.js": "^12.2.0",
@@ -28,6 +28,13 @@
   },
   "homepage": "https://github.com/GigaSmurf/GigaSmurf-Bot#readme",
   "overrides": {
-    "node-forge": "^1.4.3"
+    "node-forge": "^1.4.3",
+    "json-schema": "^0.4.0",
+    "jsonwebtoken": "^9.0.0",
+    "qs": "^6.14.1",
+    "form-data": "^2.5.4",
+    "tmp": "^0.2.4",
+    "@grpc/grpc-js": "^1.14.7",
+    "date-and-time": "^0.14.2"
   }
 }
