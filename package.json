@@ -35,6 +35,13 @@
     "form-data": "^2.5.4",
     "tmp": "^0.2.4",
     "@grpc/grpc-js": "^1.14.7",
-    "date-and-time": "^0.14.2"
+    "date-and-time": "^0.14.2",
+    "tar": "^7.5.3",
+    "brace-expansion": "^1.1.22",
+    "ajv": "^6.15.0",
+    "uuid": "^11.1.1",
+    "got": "^11.8.5",
+    "xml2js": "^0.5.0",
+    "tough-cookie": "^4.1.4"
   }
 }
